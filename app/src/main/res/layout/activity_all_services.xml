@@ -1,0 +1,118 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/orange"
+    android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="43dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="355dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:src="@drawable/back_arrow"
+        android:scaleType="centerCrop"/>
+    <RelativeLayout
+        android:id="@+id/user_base_info"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:background="@color/white"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="25dp"
+        android:padding="20dp"
+        android:elevation="10dp">
+        <TextView
+            android:id="@+id/services_title"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:elevation="10dp"
+            android:text="Select Desired Services"
+            android:textAlignment="center"
+            android:textSize="35sp"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_margin="10dp"
+            android:layout_weight="0.4" app:cardElevation="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <!--  Need the logo src for drawable folder  -->
+                <ImageView
+                    android:id="@+id/basic_service1_img"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/gray"
+                    android:src="@drawable/scissors_icon"/>
+                <TextView android:id="@+id/basic_service_txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/basic_service1_img" android:layout_centerInParent="true" android:includeFontPadding="false" android:text="@string/haircut" android:textAlignment="center" android:textSize="12sp"/>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_height="60dp" android:layout_margin="10dp" android:layout_marginTop="0dp" android:layout_weight="0.4" app:cardElevation="10dp">
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent" android:padding="5dp">
+                <!--  Could be something like dollar sign for a
+                                 wallet or can rid of -->
+                <ImageView android:id="@+id/basic_service2_img" android:layout_width="30dp" android:layout_height="30dp" android:layout_centerHorizontal="true" android:background="@color/gray" android:src="@drawable/shampoo_icon" android:scaleType="fitCenter"/>
+                <TextView android:id="@+id/basic_service2_txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/basic_service2_img" android:layout_centerInParent="true" android:includeFontPadding="false" android:text="@string/shampoo" android:textAlignment="center" android:textSize="12sp"/>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_height="60dp" android:layout_margin="10dp" android:layout_marginTop="0dp" android:layout_weight="0.4" app:cardElevation="10dp">
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent" android:padding="5dp">
+                <!--  Could be something like dollar sign for a
+                                 wallet or can rid of -->
+                <ImageView android:id="@+id/basic_service3_img" android:layout_width="30dp" android:layout_height="30dp" android:layout_centerHorizontal="true" android:background="@color/gray" android:src="@drawable/styling_icon" android:scaleType="fitCenter"/>
+                <TextView android:id="@+id/basic_service3_txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/basic_service3_img" android:layout_centerInParent="true" android:includeFontPadding="false" android:text="@string/styling" android:textAlignment="center" android:textSize="12sp"/>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:padding="0dp">
+        <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_height="120dp" android:layout_margin="5dp" android:layout_weight="1" app:cardElevation="10dp">
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent" android:padding="5dp">
+                <ImageView android:id="@+id/hommes_img" android:layout_width="85dp" android:layout_height="85dp" android:layout_marginStart="10dp" android:layout_marginTop="10dp" android:background="@color/gray" android:src="@drawable/man_pic"/>
+                <ImageView android:id="@+id/service1" android:layout_width="25dp" android:layout_height="25dp" android:layout_alignEnd="@id/hommes_img" android:layout_marginStart="25dp" android:layout_marginTop="10dp" android:layout_marginEnd="-44dp" android:background="@color/gray"/>
+                <TextView android:id="@+id/service1_txt" android:layout_width="145dp" android:layout_height="25dp" android:layout_alignParentRight="true" android:layout_marginTop="10dp" android:layout_marginRight="45dp" android:text="@string/clipper_shave" android:textAlignment="center"/>
+                <ImageView android:id="@+id/service2" android:layout_width="25dp" android:layout_height="25dp" android:layout_below="@id/service1" android:layout_alignRight="@id/hommes_img" android:layout_marginLeft="25dp" android:layout_marginTop="10dp" android:layout_marginRight="-44dp" android:background="@color/gray"/>
+                <TextView android:id="@+id/service2_txt" android:layout_width="145dp" android:layout_height="25dp" android:layout_below="@id/service1_txt" android:layout_alignParentEnd="true" android:layout_marginTop="10dp" android:layout_marginEnd="45dp" android:text="@string/beard_color" android:textAlignment="center"/>
+                <ImageView android:id="@+id/service3" android:layout_width="25dp" android:layout_height="25dp" android:layout_below="@id/service2" android:layout_alignRight="@id/hommes_img" android:layout_marginLeft="25dp" android:layout_marginTop="10dp" android:layout_marginRight="-44dp" android:background="@color/gray"/>
+                <TextView android:id="@+id/service3_txt" android:layout_width="145dp" android:layout_height="25dp" android:layout_below="@id/service2_txt" android:layout_alignParentRight="true" android:layout_marginTop="10dp" android:layout_marginRight="45dp" android:text="@string/straight_razor" android:textAlignment="center"/>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="0dp">
+        <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_margin="5dp" android:layout_height="120dp" android:layout_weight="1" app:cardElevation="10dp">
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent" android:padding="5dp">
+                <ImageView android:id="@+id/femmes_img" android:layout_width="85dp" android:layout_height="85dp" android:layout_marginStart="10dp" android:layout_marginTop="10dp" android:background="@color/gray" android:src="@drawable/woman_pic"/>
+                <ImageView android:id="@+id/service1f" android:layout_width="25dp" android:layout_height="25dp" android:layout_alignEnd="@id/femmes_img" android:layout_marginStart="25dp" android:layout_marginTop="10dp" android:layout_marginEnd="-44dp" android:background="@color/gray"/>
+                <TextView android:id="@+id/service1f_txt" android:layout_width="145dp" android:layout_height="25dp" android:textAlignment="center" android:layout_marginTop="10dp" android:layout_marginEnd="45dp" android:text="@string/hair_coloring" android:layout_alignParentEnd="true"/>
+                <ImageView android:id="@+id/service2f" android:layout_width="25dp" android:layout_height="25dp" android:layout_below="@id/service1f" android:layout_alignEnd="@id/femmes_img" android:layout_marginStart="25dp" android:layout_marginTop="10dp" android:layout_marginEnd="-44dp" android:background="@color/gray"/>
+                <TextView android:id="@+id/service2f_txt" android:layout_width="145dp" android:layout_height="25dp" android:textAlignment="center" android:layout_marginTop="10dp" android:layout_below="@id/service1f_txt" android:layout_marginEnd="45dp" android:text="@string/face_mask" android:layout_alignParentEnd="true"/>
+                <ImageView android:id="@+id/service3f" android:layout_width="25dp" android:layout_height="25dp" android:layout_below="@id/service2f" android:layout_alignEnd="@id/femmes_img" android:layout_marginStart="25dp" android:layout_marginTop="10dp" android:layout_marginEnd="-44dp" android:background="@color/gray"/>
+                <TextView android:id="@+id/service3f_txt" android:layout_width="145dp" android:layout_height="25dp" android:textAlignment="center" android:layout_marginTop="10dp" android:layout_below="@id/service2f_txt" android:layout_marginEnd="45dp" android:text="Service 3" android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="0dp">
+        <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_margin="5dp" android:layout_height="120dp" android:layout_weight="1" app:cardElevation="10dp">
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent" android:padding="5dp">
+                <ImageView android:id="@+id/enfants_img" android:layout_width="85dp" android:layout_height="85dp" android:layout_marginStart="10dp" android:layout_marginTop="10dp" android:background="@color/gray" android:src="@drawable/family_pic" android:scaleType="centerCrop"/>
+                <ImageView android:id="@+id/service1e" android:layout_width="25dp" android:layout_height="25dp" android:layout_alignRight="@id/enfants_img" android:layout_marginLeft="25dp" android:layout_marginTop="10dp" android:layout_marginRight="-44dp" android:background="@color/gray"/>
+                <TextView android:id="@+id/service1e_txt" android:layout_width="145dp" android:layout_height="25dp" android:textAlignment="center" android:layout_marginTop="10dp" android:layout_marginRight="45dp" android:text="Service 1" android:layout_alignParentRight="true"/>
+                <ImageView android:id="@+id/service2e" android:layout_width="25dp" android:layout_height="25dp" android:layout_below="@id/service1e" android:layout_alignRight="@id/enfants_img" android:layout_marginLeft="25dp" android:layout_marginTop="10dp" android:layout_marginRight="-44dp" android:background="@color/gray"/>
+                <TextView android:id="@+id/service2e_txt" android:layout_width="145dp" android:layout_height="25dp" android:textAlignment="center" android:layout_marginTop="10dp" android:layout_below="@id/service1e_txt" android:layout_marginRight="45dp" android:text="Service 2" android:layout_alignParentRight="true"/>
+                <ImageView android:id="@+id/service3e" android:layout_width="25dp" android:layout_height="25dp" android:layout_below="@id/service2e" android:layout_alignRight="@id/enfants_img" android:layout_marginLeft="25dp" android:layout_marginTop="10dp" android:layout_marginRight="-44dp" android:background="@color/gray"/>
+                <TextView android:id="@+id/service3e_txt" android:layout_width="145dp" android:layout_height="25dp" android:textAlignment="center" android:layout_marginTop="10dp" android:layout_below="@id/service2e_txt" android:layout_marginRight="45dp" android:text="Service 3" android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</LinearLayout>
