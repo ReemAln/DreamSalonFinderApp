@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "956134156779",
+    "project_id": "neon-glyph-349520",
+    "storage_bucket": "neon-glyph-349520.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:956134156779:android:33684303b71cb65a2dd1ae",
+        "android_client_info": {
+          "package_name": "com.example.dreamsalonfinderapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "956134156779-i0eqt89p4n1nksmvclbh0s9qus5eeji1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8DxnwQQSIR_qFF8sS9y0fDpCaylMSSGI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "956134156779-i0eqt89p4n1nksmvclbh0s9qus5eeji1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
