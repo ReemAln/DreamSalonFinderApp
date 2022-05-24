@@ -1,47 +1,51 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/orange"
+    android:orientation="vertical">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/orange"
     android:orientation="vertical">
 
-    <ImageButton
-        android:id="@+id/back_button"
-        android:layout_width="43dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="355dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/white"
-        android:src="@drawable/back_arrow"
-        android:scaleType="centerCrop"/>
+
     <RelativeLayout
         android:id="@+id/user_base_info"
-        android:layout_width="match_parent"
-        android:layout_height="125dp"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
         android:background="@color/white"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="35dp"
+        android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:padding="20dp"
         android:elevation="10dp">
+
         <TextView
             android:id="@+id/services_title"
             android:layout_width="match_parent"
-            android:layout_height="85dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="20dp"
             android:elevation="10dp"
+            android:gravity="center"
             android:text="Select Desired Services"
-            android:textAlignment="center"
-            android:textSize="35sp"/>
+            android:textSize="25sp" />
+
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="5dp">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_margin="10dp"
-            android:layout_weight="0.4" app:cardElevation="10dp">
+            android:layout_weight="0.4"
+            app:cardElevation="10dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -49,13 +53,13 @@
                 android:padding="5dp">
 
                 <!--  Need the logo src for drawable folder  -->
-                <ImageView
+                <ImageButton
                     android:id="@+id/basic_service1_img"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_centerHorizontal="true"
                     android:background="@color/gray"
-                    android:src="@drawable/scissors_icon"/>
+                    android:src="@drawable/scissors_icon" />
 
                 <TextView
                     android:id="@+id/basic_service_txt"
@@ -143,11 +147,13 @@
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:padding="0dp">
+
         <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
             android:layout_height="120dp"
@@ -333,7 +339,7 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
             android:layout_margin="5dp"
-            android:layout_height="120dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             app:cardElevation="10dp">
 
@@ -418,4 +424,34 @@
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/searchBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:backgroundTint="@color/gray"
+            android:text="Search"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/goBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="185dp"
+            android:layout_marginEnd="25dp"
+            android:backgroundTint="@color/gray"
+            android:text="Go Back"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
 </LinearLayout>
+</ScrollView>
