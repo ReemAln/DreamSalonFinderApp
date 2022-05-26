@@ -13,5 +13,7 @@
     <string name="hair_coloring">Hair Coloring</string>
     <string name="face_mask">Haircut</string>
     <string name="mani_pedi">Manicure/Pedicure</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

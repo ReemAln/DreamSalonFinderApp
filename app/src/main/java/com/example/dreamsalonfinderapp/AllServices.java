@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 public class AllServices extends AppCompatActivity {
     Intent searchMapIntent, returnIntent;
-    String haircut, shampoo, styling, baseUrl, searchUrl = "", key = "key";
+    String haircut, shampoo, styling, baseUrl ="https://www.google.com/maps/search/", searchUrl = "", key = "key";
     Boolean isHairCutChecked = false;
     ImageButton haircutbtn;
     Button searchBtn, returnBtn;
@@ -24,10 +24,10 @@ public class AllServices extends AppCompatActivity {
         setContentView(R.layout.activity_all_services);
         haircutbtn= findViewById(R.id.basic_service1_img);
         searchBtn= findViewById(R.id.searchBtn);
-        returnBtn = findViewById(R.id.goBackButton);
+     //   returnBtn = findViewById(R.id.goBackButton);
 
 
-        baseUrl = "https://www.google.com/maps/search/";
+
 
 
         haircutbtn.setOnClickListener(new View.OnClickListener() {
@@ -42,8 +42,10 @@ public class AllServices extends AppCompatActivity {
         });
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
+                if(isHairCutChecked)
                 searchUrl = baseUrl + haircut;
                 searchMapIntent = new Intent(getApplicationContext(), MapsActivity.class);
                 searchMapIntent.putExtra(key, searchUrl);
@@ -51,13 +53,13 @@ public class AllServices extends AppCompatActivity {
             }
         });
 
-        returnBtn.setOnClickListener(new View.OnClickListener() {
+    /*    returnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 returnIntent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(returnIntent);
             }
-        });
+        });   */
 
     }
 }
