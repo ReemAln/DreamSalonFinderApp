@@ -26,6 +26,7 @@
             android:layout_centerVertical="true"
             android:background="@color/gray">
         </ImageView>
+
         <TextView
             android:id="@+id/name_field"
             android:layout_width="195dp"
@@ -36,20 +37,20 @@
             android:includeFontPadding="false"
             android:text="Someone's Name"
             android:textAlignment="center"
-            android:textSize="22sp"/>
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/email_field"
             android:layout_width="195dp"
             android:layout_height="wrap_content"
+            android:layout_below="@id/name_field"
             android:layout_centerVertical="true"
             android:layout_marginStart="40dp"
-            android:layout_below="@id/name_field"
             android:layout_toEndOf="@id/profile_image"
             android:includeFontPadding="false"
             android:text="Someone@email.com"
             android:textAlignment="center"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
     </RelativeLayout>
 
         <!--
@@ -188,7 +189,7 @@
         android:layout_marginStart="125dp"
         android:layout_marginEnd="125dp"
         android:layout_width="match_parent"
-        android:text="UPDATE"/>
+        android:text="Start Search"/>
 
         <LinearLayout
             android:id="@+id/linearLayout4"

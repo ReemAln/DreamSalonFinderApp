@@ -11,7 +11,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddServices extends AppCompatActivity implements ServicesListener{
+public class AddServices extends AppCompatActivity implements ServicesListener {
     private Button buttonToAddServices;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
