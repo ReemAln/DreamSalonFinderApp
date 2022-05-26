@@ -1,11 +1,16 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/orange"
-    tools:context=".activity_user_profile"
-    android:orientation="vertical">
+    tools:context=".UserProfile"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <RelativeLayout android:id="@+id/user_base_info"
         android:layout_width="match_parent"
         android:layout_height="175dp"
@@ -46,7 +51,9 @@
             android:textAlignment="center"
             android:textSize="17sp"/>
     </RelativeLayout>
-    <LinearLayout
+
+        <!--
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp">
@@ -62,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="5dp">
-                <!--  Need the logo src for drawable folder  -->
+
                 <ImageView
                     android:id="@+id/logo"
                     android:layout_width="30dp"
@@ -95,8 +102,7 @@
                 android:layout_height="match_parent"
                 android:padding="5dp">
 
-                <!--  Could be something like dollar sign for a
-                                 wallet or can rid of -->
+
                 <ImageView
                     android:id="@+id/logo2"
                     android:layout_width="30dp"
@@ -114,7 +120,7 @@
                     android:textSize="20sp"/>
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
+    </LinearLayout>    -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -183,4 +189,27 @@
         android:layout_marginEnd="125dp"
         android:layout_width="match_parent"
         android:text="UPDATE"/>
-</LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/flFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginTop="75dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+    </LinearLayout>
+</ScrollView>
