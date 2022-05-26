@@ -167,6 +167,7 @@
                 android:layout_width="match_parent"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+
         <!-- Maybe we can figure out how to ** the password or something  -->
         <com.google.android.material.textfield.TextInputLayout
             android:hint="Password"
@@ -181,6 +182,7 @@
                 android:layout_width="match_parent"/>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
+
     <!--Add relative to make it look better -->
     <Button
         android:backgroundTint="@color/gray"

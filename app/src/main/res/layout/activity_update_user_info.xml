@@ -13,8 +13,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="@android:color/holo_orange_light"
+            android:layout_height="175dp"
+            android:background="@color/orange"
             android:padding="20dp">
 
             <ImageView
@@ -47,89 +47,10 @@
                 android:textSize="14sp"/>
 
         </RelativeLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-100dp"
-            android:padding="20dp">
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="125dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                app:cardBackgroundColor="@android:color/holo_orange_light"
-                app:cardElevation="10dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="5dp">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/payment_image"/>
-
-                    <TextView
-                        android:id="@+id/payment_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/bungee"
-                        android:includeFontPadding="false"
-                        android:text="123$"
-                        android:textSize="20sp"/>
-
-                    <TextView android:id="@+id/payment_desc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/payment_label" android:layout_centerHorizontal="true" android:includeFontPadding="false" android:text="Balance" android:textSize="20sp"/>
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="125dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                app:cardBackgroundColor="@android:color/holo_orange_light"
-                app:cardElevation="10dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="5dp">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/booking_image"/>
-
-                    <TextView
-                        android:id="@+id/booking_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/bungee"
-                        android:includeFontPadding="false"
-                        android:text="12"
-                        android:textSize="20sp"/>
-
-                    <TextView
-                        android:id="@+id/booking_desc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/booking_label"
-                        android:layout_centerHorizontal="true"
-                        android:includeFontPadding="false"
-                        android:text="Booking"
-                        android:textSize="20sp"/>
-
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-        </LinearLayout>
 
         <LinearLayout
+            android:background="@color/orange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -138,7 +59,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Full Name">
+                android:text="Full Name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -179,11 +100,22 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="10dp"
-                    android:text="aabbccdd"/>
+                    android:drawablePadding="10dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirm Password">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                android:layout_marginTop="55dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Update" android:fontFamily="@font/bungee"

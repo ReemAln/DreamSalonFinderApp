@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/bungee"
-        android:text="Hello There , Welcome Back"
+        android:text="Hello There!"
         android:textColor="#000"
         android:textSize="20sp"
         android:transitionName="logo_text"/>

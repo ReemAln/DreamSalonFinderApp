@@ -30,7 +30,7 @@ public class Login extends AppCompatActivity {
     Button callSignUp, login_btn;
     ImageView image;
     TextView logoText;
-    EditText username, password;
+    EditText email, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,24 +38,16 @@ public class Login extends AppCompatActivity {
      // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
-
+        //
         //Hooks
         image = findViewById(R.id.logo_image);
         logoText = findViewById(R.id.logo_name);
-      // username = findViewById(R.id.username);
+        email = findViewById(R.id.emailLogin);
         password = findViewById(R.id.passwordLogin);
         callSignUp = findViewById(R.id.signup_screen);
         login_btn = findViewById(R.id.loginBtn);
         //image=findViewById(R.id.imageView);
 
-
-        login_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Login.this, UserProfile.class);
-                startActivity(intent);
-            }
-        });
 
 
 
@@ -80,16 +72,16 @@ public class Login extends AppCompatActivity {
             }
         });
     }
-
-  /*  private Boolean validateUserName() {
-        String val = username.getEditText().getText().toString();
+/*
+  private Boolean validateUserName() {
+        String val = email.getText().toString();
 
         if (val.isEmpty()) {
-            username.setError("Field cannot be empty");
+            email.setError("Field cannot be empty");
             return false;
         } else {
-            username.setError(null);
-            username.setErrorEnabled(false);
+            email.setError(null);
+            email.setErrorEnabled(false);
             return true;
         }
     }
@@ -160,12 +152,7 @@ public class Login extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
+        });   */
 
-    }
-*/
-    //Call SignUp Screen
-    public void CallSignUpScreen(View view) {
 
-    }
 }
