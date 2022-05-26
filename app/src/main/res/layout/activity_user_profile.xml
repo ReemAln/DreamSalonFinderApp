@@ -1,10 +1,23 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/orange" tools:context=".activity_user_profile" android:orientation="vertical">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/orange"
+    tools:context=".UserProfile"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <RelativeLayout android:id="@+id/user_base_info"
         android:layout_width="match_parent"
         android:layout_height="175dp"
         android:background="@color/white"
         android:layout_marginTop="20dp"
         android:padding="20dp">
+
         <!--  Find out how to add profile image here  -->
         <ImageView
             android:id="@+id/profile_image"
@@ -13,6 +26,7 @@
             android:layout_centerVertical="true"
             android:background="@color/gray">
         </ImageView>
+
         <TextView
             android:id="@+id/name_field"
             android:layout_width="195dp"
@@ -23,22 +37,24 @@
             android:includeFontPadding="false"
             android:text="Someone's Name"
             android:textAlignment="center"
-            android:textSize="22sp"/>
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/email_field"
             android:layout_width="195dp"
             android:layout_height="wrap_content"
+            android:layout_below="@id/name_field"
             android:layout_centerVertical="true"
             android:layout_marginStart="40dp"
-            android:layout_below="@id/name_field"
             android:layout_toEndOf="@id/profile_image"
             android:includeFontPadding="false"
             android:text="Someone@email.com"
             android:textAlignment="center"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
     </RelativeLayout>
-    <LinearLayout
+
+        <!--
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp">
@@ -54,39 +70,146 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="5dp">
-                <!--  Need the logo src for drawable folder  -->
+
                 <ImageView
-                    android:id="@+id/logo" android:layout_width="30dp" android:layout_height="30dp" android:background="@color/gray" android:layout_centerHorizontal="true"/>
-                <TextView android:id="@+id/subscribed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:includeFontPadding="false" android:text="Subscribe? Pay us!" android:textSize="20sp" android:textAlignment="center"/>
+                    android:id="@+id/logo"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@color/gray"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:id="@+id/subscribed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:includeFontPadding="false"
+                    android:text="Subscribe? Pay us!"
+                    android:textSize="20sp"
+                    android:textAlignment="center"/>
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
-        <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_margin="10dp" android:layout_height="125dp" android:layout_weight="1" android:cardElevation="10dp" android:layout_marginTop="35dp">
-            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent" android:padding="5dp">
-                <!--  Could be something like dollar sign for a
-                                 wallet or can rid of -->
-                <ImageView android:id="@+id/logo2" android:layout_width="30dp" android:layout_height="30dp" android:background="@color/gray" android:layout_centerHorizontal="true"/>
-                <TextView android:id="@+id/wallet" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:includeFontPadding="false" android:text="$amount" android:textSize="20sp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_margin="10dp"
+            android:layout_height="125dp"
+            android:layout_weight="1"
+            app:cardElevation="10dp"
+            android:layout_marginTop="35dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+
+                <ImageView
+                    android:id="@+id/logo2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@color/gray"
+                    android:layout_centerHorizontal="true"/>
+
+                <TextView
+                    android:id="@+id/wallet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:includeFontPadding="false"
+                    android:text="$amount"
+                    android:textSize="20sp"/>
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
-        <com.google.android.material.textfield.TextInputLayout android:hint="Full Name" android:id="@+id/full_name_profile" android:layout_height="wrap_content" android:layout_width="match_parent">
+    </LinearLayout>    -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="Full Name"
+            android:id="@+id/full_name_profile"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
             <!--  can add little icons at the beginning of these  -->
-            <com.google.android.material.textfield.TextInputEditText android:drawablePadding="10dp" android:layout_height="wrap_content" android:layout_width="match_parent"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:drawablePadding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"/>
         </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout android:hint="Email" android:id="@+id/email_profile" android:layout_height="wrap_content" android:layout_width="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="Email" android:id="@+id/email_profile"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
             <!--  can add little icons at the beginning of these  -->
-            <com.google.android.material.textfield.TextInputEditText android:drawablePadding="10dp" android:layout_height="wrap_content" android:layout_width="match_parent"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:drawablePadding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"/>
         </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout android:hint="Phone Number" android:id="@+id/phone_profile" android:layout_height="wrap_content" android:layout_width="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="Phone Number"
+            android:id="@+id/phone_profile"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
             <!--  can add little icons at the beginning of these  -->
-            <com.google.android.material.textfield.TextInputEditText android:drawablePadding="10dp" android:layout_height="wrap_content" android:layout_width="match_parent"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:drawablePadding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"/>
         </com.google.android.material.textfield.TextInputLayout>
+
+
         <!-- Maybe we can figure out how to ** the password or something  -->
-        <com.google.android.material.textfield.TextInputLayout android:hint="Password" android:id="@+id/password_profile" android:layout_height="wrap_content" android:layout_width="match_parent">
+        <com.google.android.material.textfield.TextInputLayout
+            android:hint="Password"
+            android:id="@+id/password_profile"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
             <!--  can add little icons at the beginning of these  -->
-            <com.google.android.material.textfield.TextInputEditText android:drawablePadding="10dp" android:layout_height="wrap_content" android:layout_width="match_parent"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:drawablePadding="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"/>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
-    <Button android:backgroundTint="@color/gray" android:layout_height="wrap_content" android:layout_marginTop="30dp" android:layout_marginStart="125dp" android:layout_marginEnd="125dp" android:layout_width="match_parent" android:text="UPDATE"/>
-</LinearLayout>
+
+    <!--Add relative to make it look better -->
+    <Button
+        android:backgroundTint="@color/gray"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginEnd="125dp"
+        android:layout_width="match_parent"
+        android:text="Start Search"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_gravity="bottom"
+                app:menu="@menu/bottom_nav_menu" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

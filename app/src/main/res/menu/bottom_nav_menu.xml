@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/profile"
+        android:title="Profile"
+        android:icon="@drawable/profile_link_foreground"/>
+
+    <item
+        android:id="@+id/addservices"
+        android:title="Add Servic"
+        android:icon="@drawable/map_link_foreground"/>
+
+    <item
+        android:id="@+id/services"
+        android:title="Services"
+        android:icon="@drawable/logout_link_foreground"/>
+
+</menu>

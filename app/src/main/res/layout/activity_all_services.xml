@@ -1,61 +1,58 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/orange"
+  >
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/orange"
     android:orientation="vertical">
 
-    <ImageButton
-        android:id="@+id/back_button"
-        android:layout_width="43dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="355dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/white"
-        android:src="@drawable/back_arrow"
-        android:scaleType="centerCrop"/>
-    <RelativeLayout
-        android:id="@+id/user_base_info"
-        android:layout_width="match_parent"
-        android:layout_height="125dp"
-        android:background="@color/white"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="25dp"
-        android:padding="20dp"
-        android:elevation="10dp">
+
+
         <TextView
             android:id="@+id/services_title"
             android:layout_width="match_parent"
-            android:layout_height="85dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:elevation="10dp"
-            android:text="Select Desired Services"
-            android:textAlignment="center"
-            android:textSize="35sp"/>
-    </RelativeLayout>
+            android:gravity="center"
+            android:layout_marginEnd="20dp"
+            android:background="@color/white"
+            android:text="Services Breakdown"
+            android:textSize="25sp" />
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="5dp">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_margin="10dp"
-            android:layout_weight="0.4" app:cardElevation="10dp">
+            android:layout_weight="0.4"
+            app:cardElevation="10dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="5dp">
 
-                <!--  Need the logo src for drawable folder  -->
-                <ImageView
+
+                <ImageButton
                     android:id="@+id/basic_service1_img"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_centerHorizontal="true"
                     android:background="@color/gray"
-                    android:src="@drawable/scissors_icon"/>
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/scissors_icon" />
 
                 <TextView
                     android:id="@+id/basic_service_txt"
@@ -83,8 +80,7 @@
                 android:layout_height="match_parent"
                 android:padding="5dp">
 
-                <!--  Could be something like dollar sign for a
-                                 wallet or can rid of -->
+
                 <ImageView
                     android:id="@+id/basic_service2_img"
                     android:layout_width="30dp"
@@ -120,8 +116,6 @@
                 android:layout_height="match_parent"
                 android:padding="5dp">
 
-                <!--  Could be something like dollar sign for a
-                                 wallet or can rid of -->
                 <ImageView
                     android:id="@+id/basic_service3_img"
                     android:layout_width="30dp"
@@ -143,11 +137,13 @@
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:padding="0dp">
+
         <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
             android:layout_height="120dp"
@@ -235,31 +231,35 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="0dp">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
-            android:layout_margin="5dp"
-            android:layout_height="120dp"
+            android:layout_marginStart="150dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_centerInParent="true"
             app:cardElevation="10dp">
 
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:padding="5dp">
 
                 <ImageView
                     android:id="@+id/femmes_img"
                     android:layout_width="85dp"
                     android:layout_height="85dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
                     android:background="@color/gray"
-                    android:src="@drawable/woman_pic"/>
+                    android:gravity="center"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/woman_pic" />
 
+
+                <!--
                 <ImageView
                     android:id="@+id/service1f"
                     android:layout_width="25dp"
@@ -315,43 +315,45 @@
                     android:id="@+id/service3f_txt"
                     android:layout_width="145dp"
                     android:layout_height="25dp"
-                    android:textAlignment="center"
-                    android:layout_marginTop="10dp"
                     android:layout_below="@id/service2f_txt"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="45dp"
                     android:text="Service 3"
-                    android:layout_alignParentRight="true"/>
+                    android:textAlignment="center" />
+                -->
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="0dp">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
-            android:layout_margin="5dp"
-            android:layout_height="120dp"
+            android:layout_marginStart="150dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_centerInParent="true"
             app:cardElevation="10dp">
 
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:padding="5dp">
 
                 <ImageView
                     android:id="@+id/enfants_img"
                     android:layout_width="85dp"
                     android:layout_height="85dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
                     android:background="@color/gray"
-                    android:src="@drawable/family_pic"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/family_pic" />
 
+                <!--
                 <ImageView
                     android:id="@+id/service1e"
                     android:layout_width="25dp"
@@ -415,7 +417,59 @@
                     android:layout_marginEnd="45dp"
                     android:text="Service 3"
                     android:layout_alignParentEnd="true"/>
+                    -->
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/searchBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="50dp"
+            android:backgroundTint="@color/gray"
+            android:text="Search"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <!--  <Button
+            android:id="@+id/goBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/searchBtn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="185dp"
+            android:layout_marginEnd="25dp"
+            android:backgroundTint="@color/gray"
+            android:text="Go Back"
+            android:textColor="@color/black"
+            android:textSize="15sp" />   -->
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom"
+            app:menu="@menu/bottom_nav_menu" />
+    </LinearLayout>
+
+
 </LinearLayout>
+</ScrollView>
