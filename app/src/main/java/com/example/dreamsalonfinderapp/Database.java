@@ -2,7 +2,6 @@ package com.example.dreamsalonfinderapp;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,11 +10,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.dreamsalonfinderapp.AllServicesFragment;
-import com.example.dreamsalonfinderapp.MapsFragment;
-import com.example.dreamsalonfinderapp.ProfileFragment;
-import com.example.dreamsalonfinderapp.R;
-import com.example.dreamsalonfinderapp.UserHelperClass;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,6 +37,7 @@ public class Database extends AppCompatActivity {
         userEmailEdit = findViewById(R.id.userPhoneEdit);
         userPhoneEdit = findViewById(R.id.userEmailEdit);
 
+
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("UserHelperClass");
 
@@ -50,13 +45,13 @@ public class Database extends AppCompatActivity {
         sendData = findViewById(R.id.buttonSubmit);
 
 
-        /*
+        /*  This is for the bottom Navigation Bar
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
-*/
+        */
 
         sendData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,30 +68,7 @@ public class Database extends AppCompatActivity {
             }
         });
     }
-/*
-    ProfileFragment profileFragment = new ProfileFragment();
-    MapsFragment mapsFragment = new MapsFragment();
-    AllServicesFragment allServicesFragment = new AllServicesFragment();
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.profile:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, profileFragment).commit();
-                return true;
-
-            case R.id.map:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, mapsFragment).commit();
-                return true;
-
-            case R.id.logout:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, allServicesFragment).commit();
-                return true;
-        }
-        return false;
-
-    }
-*/
     public void addDataToFirebase(String name, String email, String phone) {
         user.setName(name);
         user.setEmail(email);
@@ -107,12 +79,12 @@ public class Database extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 databaseReference.setValue(user);
 
-                Toast.makeText(com.example.dreamsalonfinderapp.Database.this, "Account Created.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Database.this, "Account Created.", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(com.example.dreamsalonfinderapp.Database.this, "Account Creation Failed." + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Database.this, "Account Creation Failed." + error, Toast.LENGTH_SHORT).show();
             }
         });
 

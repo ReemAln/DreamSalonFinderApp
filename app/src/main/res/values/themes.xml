@@ -22,4 +22,8 @@
         <item name="colorPrimaryDark">@color/white</item>
         <item name="colorAccent">@color/purple_200</item>
     </style>
+    <style name="RatingBar" parent="Theme.DreamSalonFinderApp">
+        <item name="colorControlActivated">@color/colorRatingActive</item>
+        <item name="colorControlNormal">@color/colorRatingInActive</item>
+    </style>
 </resources>

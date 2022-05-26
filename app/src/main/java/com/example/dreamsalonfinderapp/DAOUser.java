@@ -30,5 +30,6 @@ public class DAOUser {
 
     //    public Task<DataSnapshot> getAll() {
 //        return databaseReference.get();
+
 //    }
 }

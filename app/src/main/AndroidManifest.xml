@@ -38,6 +38,13 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
+            android:name=".ServicesAdapter"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".AddServices"
+            android:exported="false" />
+        <activity
             android:name=".MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
@@ -47,7 +54,7 @@
         <activity
             android:name=".UserProfile"
             android:exported="false"
-            android:windowSoftInputMode="adjustNothing"/>
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".ProfileUser"
             android:exported="false" />

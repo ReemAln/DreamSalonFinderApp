@@ -1,172 +1,111 @@
 package com.example.dreamsalonfinderapp;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignUp extends AppCompatActivity {
 
     //variables
-    TextInputLayout regName, regUsername, regEmail, regPhoneNo, regPassword;
+    private EditText userNameEdit, userEmailEdit, userPhoneEdit, userEditPassword, userConfirmPassword;
     Button regBtn, regToLoginBtn;
 
-    FirebaseDatabase rootNode;
-    DatabaseReference reference;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+    UserHelperClass user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        try {
+
             super.onCreate(savedInstanceState);
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
             setContentView(R.layout.activity_sign_up);
-            //Hook to all xml elements in the activity_sign_up.xml
-            regName = findViewById(R.id.reg_name);
-            regUsername = findViewById(R.id.reg_username);
-            regEmail = findViewById(R.id.reg_email);
-            regPhoneNo = findViewById(R.id.reg_phone_No);
-            regPassword = findViewById(R.id.reg_password);
+
+
+
+            userNameEdit = findViewById(R.id.name);
+            userEmailEdit = findViewById(R.id.email);
+            userPhoneEdit = findViewById(R.id.phone);
+            userEditPassword = findViewById(R.id.password);
+            userConfirmPassword = findViewById(R.id.confirmPassword);
+
+            firebaseDatabase = FirebaseDatabase.getInstance();
+            databaseReference = firebaseDatabase.getReference("UserHelperClass");
+
+            user = new UserHelperClass();
             regBtn = findViewById(R.id.reg_btn);
-            regToLoginBtn = findViewById(R.id.reg_login_btn);
-            //save data to firebase on button click
+
+
+        /*  This is for the bottom Navigation Bar
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setSelectedItemId(R.id.profile);
+
+        */
+
             regBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                 /*   if (!validateName() | !validatePassword() | !validatePhoneNo() | !validateEmail() | !validateUserName()) {
-                        return;
-                    }*/
-                    rootNode = FirebaseDatabase.getInstance();
-                    reference = rootNode.getReference("users");
-                    //get all the values
-                    //get all the values in string
-                    String name = regName.getEditText().getText().toString();
-                    String username = regUsername.getEditText().getText().toString();
-                    String email = regEmail.getEditText().getText().toString();
-                    String phoneNo = regPhoneNo.getEditText().getText().toString();
-                    String password = regPassword.getEditText().getText().toString();
-                    UserHelperClass helperClass = new UserHelperClass(name, username, email, phoneNo, password);
-                    reference.child(phoneNo).setValue(helperClass);
+                    Intent intent = new Intent(SignUp.this, Login.class);
+                    String name = userNameEdit.getText().toString();
+                    String email = userEmailEdit.getText().toString();
+                    String phone = userPhoneEdit.getText().toString();
+                    String password = userEditPassword.getText().toString();
+                    String confirmPassword = userConfirmPassword.getText().toString();
+
+                    if (TextUtils.isEmpty(name) && TextUtils.isEmpty(phone) && TextUtils.isEmpty(email) && TextUtils.isEmpty(password) && TextUtils.isEmpty(confirmPassword)) {
+                        Toast.makeText(SignUp.this, "Please add your information.", Toast.LENGTH_SHORT).show();
+
+                    } else if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(phone) && !TextUtils.isEmpty(phone) && !TextUtils.isEmpty(phone) && !TextUtils.isEmpty(phone)){
+                        addDataToFirebase(name, email, phone, password, confirmPassword);
+                        startActivity(intent);
+                    }
                 }
             });
-        } catch (Exception ex) {
-            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
-    }
-/*
-    private Boolean validateName() {
-        String val = regName.getEditText().getText().toString();
+        public void addDataToFirebase (String name, String email, String phone, String password, String confirmPassword){
+            user.setName(name);
+            user.setEmail(email);
+            user.setPhone(phone);
+            user.setPassword(password);
+            user.setConfirmPassword(confirmPassword);
 
-        if (val.isEmpty()) {
-            regName.setError("Field cannot be empty");
-            return false;
-        } else {
-            regName.setError(null);
-            regName.setErrorEnabled(false);
-            return true;
-        }
-    }
 
-    private Boolean validateUserName() {
-        String val = regUsername.getEditText().getText().toString();
-        String noWhiteSpace = "\\A\\w{4,20}\\z";
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    databaseReference.setValue(user);
+                    Toast.makeText(SignUp.this, "Account Created.", Toast.LENGTH_SHORT).show();
+                }
 
-        if (val.isEmpty()) {
-            regUsername.setError("Field cannot be empty");
-            return false;
-        } else if (val.length() >= 15) {
-            regUsername.setError("Username too long");
-            return false;
-        } else if (!val.matches(noWhiteSpace)) {
-            regUsername.setError("White Spaces are not allowed");
-            return false;
-        } else {
-            regUsername.setError(null);
-            regUsername.setErrorEnabled(false);
-            return true;
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(SignUp.this, "Account Creation Failed." + error, Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 
-    private Boolean validateEmail() {
-        String val = regEmail.getEditText().getText().toString();
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
-        if (val.isEmpty()) {
-            regEmail.setError("Field cannot be empty");
-            return false;
-        } else if (!val.matches(emailPattern)) {
-            regEmail.setError("Invalid email address");
-            return false;
-        } else {
-            regEmail.setError(null);
-            regEmail.setErrorEnabled(false);
-            return true;
-        }
-    }
 
-    private Boolean validatePhoneNo() {
-        String val = regPhoneNo.getEditText().getText().toString();
 
-        if (val.isEmpty()) {
-            regPhoneNo.setError("Field cannot be empty");
-            return false;
-        } else {
-            regPhoneNo.setError(null);
-            regPhoneNo.setErrorEnabled(false);
-            return true;
-        }
-    }
 
-    private Boolean validatePassword() {
-        String val = regPassword.getEditText().getText().toString();
-        String passwordVal = "^" +
-                //"(?=.*[0-9])" +         //at least 1 digit
-                //"(?=.*[a-z])" +         //at least 1 lower case letter
-                //"(?=.*[A-Z])" +         //at least 1 upper case letter
-                "(?=.*[a-zA-Z])" +      //any letter
-                "(?=.*[@#$%^&+=])" +    //at least 1 special character
-                "(?=\\S+$)" +           //no white spaces
-                ".{4,}" +               //at least 4 characters
-                "$";
-
-        if (val.isEmpty()) {
-            regPassword.setError("Field cannot be empty");
-            return false;
-        } else if (!val.matches(passwordVal)) {
-            regPassword.setError("Password is too weak");
-            return false;
-        } else {
-            regPassword.setError(null);
-            regPassword.setErrorEnabled(false);
-            return true;
-        }
-
-    }*/
-
-    //save data in FireBase on button click
-    public void registerUser(View view) {
-      /*  try {
-            if (!validateName() | !validatePassword() | !validatePhoneNo() | !validateEmail() | !validateUserName()) {
-                return;
-            }*/
-
-        //get all the values in string
-        String name = regName.getEditText().getText().toString();
-        String username = regUsername.getEditText().getText().toString();
-        String email = regEmail.getEditText().getText().toString();
-        String phoneNo = regPhoneNo.getEditText().getText().toString();
-        String password = regPassword.getEditText().getText().toString();
-        UserHelperClass helperClass = new UserHelperClass(name, username, email, phoneNo, password);
-        reference.child(username).setValue(helperClass);
-    /*    } catch (Exception ex) {
-            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
-        }*/
-
-    }
-}

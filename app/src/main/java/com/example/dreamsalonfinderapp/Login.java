@@ -10,6 +10,7 @@ import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,29 +29,39 @@ public class Login extends AppCompatActivity {
     Button callSignUp, login_btn;
     ImageView image;
     TextView logoText;
-    TextInputLayout username, password;
+    EditText username, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+     // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
         //Hooks
         image = findViewById(R.id.logo_image);
         logoText = findViewById(R.id.logo_name);
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
+      // username = findViewById(R.id.username);
+        password = findViewById(R.id.passwordLogin);
         callSignUp = findViewById(R.id.signup_screen);
-        login_btn = findViewById(R.id.login_btn);
+        login_btn = findViewById(R.id.loginBtn);
         //image=findViewById(R.id.imageView);
+
+
+        login_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login.this, UserProfile.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         callSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Login.this, SignUp.class);
-                // startActivity(intent);
-                try {
+                startActivity(intent);
+      /*    try {
                     Pair[] pairs = new Pair[6];
                     pairs[0] = new Pair<View, String>(image, "logo_image");
                     pairs[1] = new Pair<View, String>(logoText, "logo_text");
@@ -62,12 +73,12 @@ public class Login extends AppCompatActivity {
                     startActivity(intent, options.toBundle());
                 } catch (Exception e) {
                     Toast.makeText(Login.this, e.getMessage().toString(), Toast.LENGTH_LONG).show();
-                }
+                }  */
             }
         });
     }
 
-    private Boolean validateUserName() {
+  /*  private Boolean validateUserName() {
         String val = username.getEditText().getText().toString();
 
         if (val.isEmpty()) {
@@ -149,7 +160,7 @@ public class Login extends AppCompatActivity {
         });
 
     }
-
+*/
     //Call SignUp Screen
     public void CallSignUpScreen(View view) {
 
