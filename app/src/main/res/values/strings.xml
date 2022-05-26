@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">DreamSalonFinderApp</string>
+    <string name="title_activity_maps">MapsActivity</string>
+
+    <!--Created Strings for search parameters -->
+
+    <string name="haircut">Haircut</string>
+    <string name="shampoo">Shampoo</string>
+    <string name="styling">Styling</string>
+    <string name="clipper_shave">Clippers</string>
+    <string name="beard_color">Beard Color</string>
+    <string name="straight_razor">Straight Razor</string>
+    <string name="hair_coloring">Hair Coloring</string>
+    <string name="face_mask">Haircut</string>
+    <string name="mani_pedi">Manicure/Pedicure</string>
+
+    <string name="services">Services</string>
+    <string name="add_to_services">Add to Services</string>
+
 </resources>
