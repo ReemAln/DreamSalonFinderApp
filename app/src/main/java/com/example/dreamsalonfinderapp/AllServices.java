@@ -1,20 +1,25 @@
 package com.example.dreamsalonfinderapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
 public class AllServices extends AppCompatActivity {
-    Intent searchMapIntent, returnIntent;
-    String haircut, shampoo, styling, baseUrl ="https://www.google.com/maps/search/", searchUrl = "", key = "key";
-    Boolean isHairCutChecked = false;
-    ImageButton haircutbtn;
-    Button searchBtn, returnBtn;
+    Intent searchMapIntent;
+    String baseUrl ="https://www.google.com/maps/search/", searchUrl = "", key = "key";
+
+
+    Button searchBtn;
 
 
 
@@ -22,44 +27,44 @@ public class AllServices extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_services);
-        haircutbtn= findViewById(R.id.basic_service1_img);
-        searchBtn= findViewById(R.id.searchBtn);
-     //   returnBtn = findViewById(R.id.goBackButton);
 
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-
-
-        haircutbtn.setOnClickListener(new View.OnClickListener() {
+        bottomNavigationView.setSelectedItemId(R.id.services);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                isHairCutChecked = true;
-                haircut = "haircut";
-            }/* Once clicked the buttons set a string to the proper search param.
-               Then once the final button is pushed it appends the string to the base url
-               into the search url */
-
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.map:
+                        startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.services:
+                        return true;
+                    case R.id.profile:
+                        startActivity(new Intent(getApplicationContext(), UserProfile.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
         });
 
+
+
+        searchBtn= findViewById(R.id.searchBtn);
         searchBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                if(isHairCutChecked)
-                searchUrl = baseUrl + haircut;
+                searchUrl = baseUrl + "haircut";
                 searchMapIntent = new Intent(getApplicationContext(), MapsActivity.class);
                 searchMapIntent.putExtra(key, searchUrl);
                 startActivity(searchMapIntent);
             }
         });
 
-    /*    returnBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                returnIntent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(returnIntent);
-            }
-        });   */
 
     }
 }

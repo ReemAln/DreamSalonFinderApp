@@ -37,10 +37,10 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity
+    <!--    <activity
             android:name=".ServicesAdapter"
-            android:exported="false"
-            tools:ignore="Instantiatable" />
+            android:exported="false" />    -->
+
         <activity
             android:name=".AddServices"
             android:exported="false" />
