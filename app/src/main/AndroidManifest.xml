@@ -65,7 +65,7 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".Dashboard"
+            android:name=".SalonInfo"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

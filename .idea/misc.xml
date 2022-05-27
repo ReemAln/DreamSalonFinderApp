@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/mattp/AndroidStudioProjects/DreamSalonFinderApp/app/src/main/res/drawable/bg_round.xml" value="0.3565" />
         <entry key="..\:/Users/mattp/AndroidStudioProjects/DreamSalonFinderApp/app/src/main/res/drawable/border.xml" value="0.361" />
         <entry key="..\:/Users/mattp/AndroidStudioProjects/DreamSalonFinderApp/app/src/main/res/drawable/ic_services_menu.xml" value="0.3565" />
         <entry key="..\:/Users/mattp/AndroidStudioProjects/DreamSalonFinderApp/app/src/main/res/drawable/map_link_foreground.xml" value="0.3625" />
@@ -21,11 +22,12 @@
         <entry key="..\:/Users/mattp/AndroidStudioProjects/DreamSalonFinderApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/mattp/AndroidStudioProjects/DreamSalonFinderApp/app/src/main/res/layout/activity_maps.xml" value="0.3614583333333333" />
         <entry key="..\:/Users/mattp/AndroidStudioProjects/DreamSalonFinderApp/app/src/main/res/layout/activity_profile_user.xml" value="0.3614583333333333" />
+        <entry key="..\:/Users/mattp/AndroidStudioProjects/DreamSalonFinderApp/app/src/main/res/layout/activity_salon_info.xml" value="0.3614583333333333" />
         <entry key="..\:/Users/mattp/AndroidStudioProjects/DreamSalonFinderApp/app/src/main/res/layout/activity_search.xml" value="0.3614583333333333" />
         <entry key="..\:/Users/mattp/AndroidStudioProjects/DreamSalonFinderApp/app/src/main/res/layout/activity_searchable.xml" value="0.3614583333333333" />
         <entry key="..\:/Users/mattp/AndroidStudioProjects/DreamSalonFinderApp/app/src/main/res/layout/activity_services_adapter.xml" value="0.3614583333333333" />
         <entry key="..\:/Users/mattp/AndroidStudioProjects/DreamSalonFinderApp/app/src/main/res/layout/activity_sign_up.xml" value="0.4" />
-        <entry key="..\:/Users/mattp/AndroidStudioProjects/DreamSalonFinderApp/app/src/main/res/layout/activity_update_user_info.xml" value="0.184375" />
+        <entry key="..\:/Users/mattp/AndroidStudioProjects/DreamSalonFinderApp/app/src/main/res/layout/activity_update_user_info.xml" value="0.4" />
         <entry key="..\:/Users/mattp/AndroidStudioProjects/DreamSalonFinderApp/app/src/main/res/layout/activity_user_profile.xml" value="0.3578125" />
         <entry key="..\:/Users/mattp/AndroidStudioProjects/DreamSalonFinderApp/app/src/main/res/layout/fragment_all_services.xml" value="0.3614583333333333" />
         <entry key="..\:/Users/mattp/AndroidStudioProjects/DreamSalonFinderApp/app/src/main/res/layout/fragment_maps.xml" value="0.3614583333333333" />

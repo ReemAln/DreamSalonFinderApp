@@ -59,13 +59,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Full Name">
+                android:hint="Full Name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="10dp"
-                    android:text="abdul"/>
+                    android:text="Someone's Name"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -100,7 +100,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="10dp" />
+                    android:drawablePadding="10dp"
+                    android:text="*****"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -111,15 +112,22 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="10dp" />
+                    android:drawablePadding="10dp"
+                    android:text="*****"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:layout_marginTop="55dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Update" android:fontFamily="@font/bungee"
-                android:background="@android:color/holo_orange_light"/>
+                android:background="@android:color/holo_orange_light"
+                android:fontFamily="@font/bungee"
+                android:text="Update" />
+            <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_orange_light"
+            android:fontFamily="@font/bungee"
+            android:text="Delete" />
 
         </LinearLayout>
     </LinearLayout>

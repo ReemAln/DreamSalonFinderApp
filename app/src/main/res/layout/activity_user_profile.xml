@@ -11,20 +11,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+
     <RelativeLayout android:id="@+id/user_base_info"
         android:layout_width="match_parent"
-        android:layout_height="175dp"
+        android:layout_height="150dp"
         android:background="@color/white"
         android:layout_marginTop="20dp"
         android:padding="20dp">
 
         <!--  Find out how to add profile image here  -->
+
         <ImageView
             android:id="@+id/profile_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_centerVertical="true"
-            android:background="@color/gray">
+            android:background="@drawable/man_pic">
+
         </ImageView>
 
         <TextView
@@ -36,6 +39,7 @@
             android:layout_toEndOf="@id/profile_image"
             android:includeFontPadding="false"
             android:text="Someone's Name"
+            android:textColor="@color/dark_blue"
             android:textAlignment="center"
             android:textSize="22sp" />
 
@@ -49,6 +53,7 @@
             android:layout_toEndOf="@id/profile_image"
             android:includeFontPadding="false"
             android:text="Someone@email.com"
+            android:textColor="@color/dark_blue"
             android:textAlignment="center"
             android:textSize="17sp" />
     </RelativeLayout>
@@ -167,49 +172,39 @@
                 android:layout_width="match_parent"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-
-        <!-- Maybe we can figure out how to ** the password or something  -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:hint="Password"
-            android:id="@+id/password_profile"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
-
-            <!--  can add little icons at the beginning of these  -->
-            <com.google.android.material.textfield.TextInputEditText
-                android:drawablePadding="10dp"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"/>
-        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <!--Add relative to make it look better -->
     <Button
+        android:id="@+id/startButton"
         android:backgroundTint="@color/gray"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="80dp"
         android:layout_marginStart="125dp"
         android:layout_marginEnd="125dp"
         android:layout_width="match_parent"
         android:text="Start Search"/>
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout4"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:gravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="0dp">
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavigationView"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_gravity="bottom"
-                app:menu="@menu/bottom_nav_menu" />
-        </LinearLayout>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:menu="@menu/bottom_nav_menu"
+                tools:layout_editor_absoluteX="0dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </LinearLayout>
 
+ </LinearLayout>
 </ScrollView>

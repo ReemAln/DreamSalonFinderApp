@@ -56,12 +56,12 @@
 
         <EditText
             android:id="@+id/emailLogin"
-            android:paddingStart="5dp"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:textColorHint="@color/dark_blue"
+            android:layout_height="48dp"
             android:background="@drawable/border"
-            android:hint="Email" />
+            android:hint="Email"
+            android:paddingStart="5dp"
+            android:textColorHint="@color/dark_blue" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -72,12 +72,12 @@
 
         <EditText
             android:id="@+id/passwordLogin"
-            android:paddingStart="5dp"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:textColorHint="@color/dark_blue"
+            android:layout_height="48dp"
             android:background="@drawable/border"
-            android:hint="Password" />
+            android:hint="Password"
+            android:paddingStart="5dp"
+            android:textColorHint="@color/dark_blue" />
 
         <!--
             <LinearLayout

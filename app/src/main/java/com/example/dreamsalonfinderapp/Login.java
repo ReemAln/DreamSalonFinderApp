@@ -35,27 +35,36 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-     // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
-        //
-        //Hooks
-        image = findViewById(R.id.logo_image);
-        logoText = findViewById(R.id.logo_name);
-        email = findViewById(R.id.emailLogin);
-        password = findViewById(R.id.passwordLogin);
-        callSignUp = findViewById(R.id.signup_screen);
-        login_btn = findViewById(R.id.loginBtn);
-        //image=findViewById(R.id.imageView);
+        //Hides action bar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+
+            //Hooks
+            image = findViewById(R.id.logo_image);
+            logoText = findViewById(R.id.logo_name);
+            email = findViewById(R.id.emailLogin);
+            password = findViewById(R.id.passwordLogin);
+            callSignUp = findViewById(R.id.signup_screen);
+            login_btn = findViewById(R.id.loginBtn);
+            //image=findViewById(R.id.imageView);
 
 
+            login_btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Login.this, UserProfile.class);
+                    startActivity(intent);
+                }
+            });
 
-
-        callSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Login.this, SignUp.class);
-                startActivity(intent);
+            callSignUp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Login.this, SignUp.class);
+                    startActivity(intent);
       /*    try {
                     Pair[] pairs = new Pair[6];
                     pairs[0] = new Pair<View, String>(image, "logo_image");
@@ -69,9 +78,9 @@ public class Login extends AppCompatActivity {
                 } catch (Exception e) {
                     Toast.makeText(Login.this, e.getMessage().toString(), Toast.LENGTH_LONG).show();
                 }  */
-            }
-        });
-    }
+                }
+            });
+        }
 /*
   private Boolean validateUserName() {
         String val = email.getText().toString();
@@ -153,6 +162,6 @@ public class Login extends AppCompatActivity {
 
             }
         });   */
-
+    }
 
 }

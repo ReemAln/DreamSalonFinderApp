@@ -7,7 +7,7 @@
 
     <item
         android:id="@+id/addservices"
-        android:title="Add Servic"
+        android:title="Add Services"
         android:icon="@drawable/map_link_foreground"/>
 
     <item

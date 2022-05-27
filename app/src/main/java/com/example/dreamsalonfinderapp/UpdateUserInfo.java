@@ -10,8 +10,11 @@ public class UpdateUserInfo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_user_info);
+        //Hides action bar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
 
-
-        /* This needs to be the update user info in the database   */
+            /* This needs to be the update user info in the database   */
+        }
     }
 }

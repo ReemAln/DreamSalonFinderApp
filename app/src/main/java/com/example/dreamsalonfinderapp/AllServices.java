@@ -17,10 +17,7 @@ import com.google.android.material.navigation.NavigationBarView;
 public class AllServices extends AppCompatActivity {
     Intent searchMapIntent;
     String baseUrl ="https://www.google.com/maps/search/", searchUrl = "", key = "key";
-
-
     Button searchBtn;
-
 
 
     @Override
@@ -28,43 +25,48 @@ public class AllServices extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_services);
 
+        //Hides action bar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        bottomNavigationView.setSelectedItemId(R.id.services);
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.map:
-                        startActivity(new Intent(getApplicationContext(), MapsActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.services:
-                        return true;
-                    case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(), UserProfile.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+            searchBtn = findViewById(R.id.searchBtn);
+            searchBtn.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+                   Intent intent = new Intent(AllServices.this, AddServices.class);
+                   startActivity(intent);
                 }
-                return false;
-            }
-        });
+            });
 
 
+            BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        searchBtn= findViewById(R.id.searchBtn);
-        searchBtn.setOnClickListener(new View.OnClickListener() {
+            bottomNavigationView.setSelectedItemId(R.id.services);
+            bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()) {
 
-            @Override
-            public void onClick(View view) {
-                searchUrl = baseUrl + "haircut";
-                searchMapIntent = new Intent(getApplicationContext(), MapsActivity.class);
-                searchMapIntent.putExtra(key, searchUrl);
-                startActivity(searchMapIntent);
-            }
-        });
+                        case R.id.services:
+                            startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                            overridePendingTransition(0, 0);
+                            return true;
 
+                        case R.id.profile:
+                            startActivity(new Intent(getApplicationContext(), UserProfile.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+
+                        case R.id.addservices:
+                            return true;
+                    }
+                    return false;
+                }
+            });
+
+        }
 
     }
-}

@@ -34,10 +34,13 @@ public class SignUp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-            super.onCreate(savedInstanceState);
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-            setContentView(R.layout.activity_sign_up);
+        super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_sign_up);
 
+        //Hides action bar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
 
 
             userNameEdit = findViewById(R.id.name);
@@ -74,13 +77,14 @@ public class SignUp extends AppCompatActivity {
                     if (TextUtils.isEmpty(name) && TextUtils.isEmpty(phone) && TextUtils.isEmpty(email) && TextUtils.isEmpty(password) && TextUtils.isEmpty(confirmPassword)) {
                         Toast.makeText(SignUp.this, "Please add your information.", Toast.LENGTH_SHORT).show();
 
-                    } else if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(phone) && !TextUtils.isEmpty(phone) && !TextUtils.isEmpty(phone) && !TextUtils.isEmpty(phone)){
+                    } else if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(phone) && !TextUtils.isEmpty(phone) && !TextUtils.isEmpty(phone) && !TextUtils.isEmpty(phone)) {
                         addDataToFirebase(name, email, phone, password, confirmPassword);
                         startActivity(intent);
                     }
                 }
             });
         }
+    }
 
         public void addDataToFirebase (String name, String email, String phone, String password, String confirmPassword){
             user.setName(name);

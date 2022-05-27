@@ -9,10 +9,13 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -29,14 +32,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.io.IOException;
+import java.util.List;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
     private String key = "key";
-    private String searchUrl = "";
-
-  /*  @Override
+    String searchUrl = "";
+    SearchView searchView;
+/*
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -45,10 +52,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(R.id.google_map);
         mapFragment.getMapAsync(this);
-    }   */
-
+    }
+*/
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -64,7 +71,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap = googleMap;
 
-
         if(mLocationPermissionsGranted) {
             getDeviceLocation();
 
@@ -76,6 +82,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
+
+
             Intent intent = getIntent();
             searchUrl = intent.getExtras().getString(key);
 
@@ -99,11 +107,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        getLocationPermission();
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+            getLocationPermission();
 
 
-    }
+            // Bottom Navigation Bar
+            BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
+            bottomNavigationView.setSelectedItemId(R.id.google_map);
+            bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.google_map:
+                            startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+                        case R.id.services:
+                            return true;
+                        case R.id.profile:
+                            startActivity(new Intent(getApplicationContext(), UserProfile.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+                    }
+                    return false;
+                }
+            });
+
+        }
 
     private void getDeviceLocation(){
         Log.d(TAG, "getDeviceLocation: getting the devices current location");
@@ -131,8 +161,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     }
                 });
             }
-        }catch (SecurityException e){
-            Log.e(TAG, "getDeviceLocation: SecurityException: " + e.getMessage() );
+        } catch (SecurityException e){
+             Log.e(TAG, "getDeviceLocation: SecurityException: " + e.getMessage() );
         }
     }
 
@@ -143,7 +173,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void initMap(){
         Log.d(TAG, "initMap: initializing map");
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.google_map);
 
         mapFragment.getMapAsync(MapsActivity.this);
     }
@@ -157,7 +187,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             if(ContextCompat.checkSelfPermission(this.getApplicationContext(),
                     COURSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-                mLocationPermissionsGranted = true;
+                    mLocationPermissionsGranted = true;
                 initMap();
             }else{
                 ActivityCompat.requestPermissions(this,
@@ -195,5 +225,4 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
-
 }

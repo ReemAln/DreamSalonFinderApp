@@ -2,8 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/orange"
-  >
+    android:background="@color/orange">
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -26,7 +25,6 @@
             android:textSize="25sp" />
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,13 +40,14 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="5dp">
+                android:padding="5dp"
+                android:background="@color/dark_blue">
 
 
                 <ImageButton
                     android:id="@+id/basic_service1_img"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_centerHorizontal="true"
                     android:background="@color/gray"
                     android:scaleType="fitCenter"
@@ -65,6 +64,7 @@
                     android:textAlignment="center"
                     android:textSize="12sp"/>
             </RelativeLayout>
+
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
@@ -78,17 +78,18 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="5dp">
+                android:padding="5dp"
+                android:background="@color/dark_blue">
 
 
                 <ImageView
                     android:id="@+id/basic_service2_img"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_centerHorizontal="true"
                     android:background="@color/gray"
-                    android:src="@drawable/shampoo_icon"
-                    android:scaleType="fitCenter"/>
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/shampoo_icon" />
 
                 <TextView
                     android:id="@+id/basic_service2_txt"
@@ -101,6 +102,7 @@
                     android:textAlignment="center"
                     android:textSize="12sp"/>
             </RelativeLayout>
+
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
@@ -114,16 +116,17 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="5dp">
+                android:padding="5dp"
+                android:background="@color/dark_blue">
 
                 <ImageView
                     android:id="@+id/basic_service3_img"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_centerHorizontal="true"
                     android:background="@color/gray"
-                    android:src="@drawable/styling_icon"
-                    android:scaleType="fitCenter"/>
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/styling_icon" />
                 <TextView
                     android:id="@+id/basic_service3_txt"
                     android:layout_width="wrap_content"
@@ -139,32 +142,34 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:padding="0dp">
 
-        <com.google.android.material.card.MaterialCardView
+
+    <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
-            android:layout_height="120dp"
-            android:layout_margin="5dp"
+            android:layout_marginStart="150dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_centerInParent="true"
             app:cardElevation="10dp">
 
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:padding="5dp">
 
                 <ImageView
                     android:id="@+id/hommes_img"
                     android:layout_width="85dp"
                     android:layout_height="85dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
                     android:background="@color/gray"
-                    android:src="@drawable/man_pic"/>
-
+                    android:gravity="center"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/man_pic" />
+      <!--
                 <ImageView
                     android:id="@+id/service1"
                     android:layout_width="25dp"
@@ -226,8 +231,11 @@
                     android:layout_marginRight="45dp"
                     android:text="@string/straight_razor"
                     android:textAlignment="center"/>
+                    -->
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -258,9 +266,7 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/woman_pic" />
 
-
-                <!--
-                <ImageView
+         <!--       <ImageView
                     android:id="@+id/service1f"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
@@ -321,7 +327,7 @@
                     android:layout_marginEnd="45dp"
                     android:text="Service 3"
                     android:textAlignment="center" />
-                -->
+           -->
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
@@ -353,7 +359,7 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/family_pic" />
 
-                <!--
+       <!--
                 <ImageView
                     android:id="@+id/service1e"
                     android:layout_width="25dp"
@@ -370,19 +376,19 @@
                     android:layout_height="25dp"
                     android:textAlignment="center"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="45dp"
+                    android:layout_marginEnd="45dp"
                     android:text="Service 1"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentEnd="true"/>
 
                 <ImageView
                     android:id="@+id/service2e"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_below="@id/service1e"
-                    android:layout_alignRight="@id/enfants_img"
-                    android:layout_marginLeft="25dp"
+                    android:layout_alignEnd="@id/enfants_img"
+                    android:layout_marginStart="25dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="-44dp"
+                    android:layout_marginEnd="-44dp"
                     android:background="@color/gray"/>
 
                 <TextView
@@ -392,19 +398,19 @@
                     android:textAlignment="center"
                     android:layout_marginTop="10dp"
                     android:layout_below="@id/service1e_txt"
-                    android:layout_marginRight="45dp"
+                    android:layout_marginEnd="45dp"
                     android:text="Service 2"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentEnd="true"/>
 
                 <ImageView
                     android:id="@+id/service3e"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_below="@id/service2e"
-                    android:layout_alignRight="@id/enfants_img"
-                    android:layout_marginLeft="25dp"
+                    android:layout_alignEnd="@id/enfants_img"
+                    android:layout_marginStart="25dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginRight="-44dp"
+                    android:layout_marginEnd="-44dp"
                     android:background="@color/gray"/>
 
                 <TextView
@@ -417,7 +423,7 @@
                     android:layout_marginEnd="45dp"
                     android:text="Service 3"
                     android:layout_alignParentEnd="true"/>
-                    -->
+             -->
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
@@ -452,8 +458,8 @@
             android:textSize="15sp" />   -->
 
     </RelativeLayout>
-
-    <LinearLayout
+</LinearLayout>
+  <!--  <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -468,8 +474,8 @@
             android:layout_height="70dp"
             android:layout_gravity="bottom"
             app:menu="@menu/bottom_nav_menu" />
-    </LinearLayout>
+    </LinearLayout>  -->
 
 
-</LinearLayout>
+
 </ScrollView>
