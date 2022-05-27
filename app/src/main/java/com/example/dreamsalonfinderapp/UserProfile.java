@@ -29,7 +29,7 @@ public class UserProfile extends AppCompatActivity {
             searchStart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+                    Intent intent = new Intent(UserProfile.this, AllServices.class);
                     startActivity(intent);
                 }
             });
@@ -47,7 +47,7 @@ public class UserProfile extends AppCompatActivity {
                             overridePendingTransition(0, 0);
                             return true;
 
-                        case R.id.services:
+                        case R.id.favorites:
                             startActivity(new Intent(UserProfile.this, AllServices.class));
                             overridePendingTransition(0, 0);
                             return true;

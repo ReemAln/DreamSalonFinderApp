@@ -54,8 +54,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.google_map);
         mapFragment.getMapAsync(this);
-    }
-*/
+    }   */
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -91,7 +91,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    private static final String TAG = "MapActivity";
+    private static final String TAG = "MapsActivity";
 
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
@@ -102,13 +102,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Boolean mLocationPermissionsGranted = false;
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
             getLocationPermission();
-
+/*
 
             // Bottom Navigation Bar
             BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -118,20 +119,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()) {
-                        case R.id.google_map:
-                            startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                        case R.id.update:
+                            startActivity(new Intent(MapsActivity.this, UpdateUserInfo.class));
                             overridePendingTransition(0, 0);
                             return true;
-                        case R.id.services:
-                            return true;
+
                         case R.id.profile:
-                            startActivity(new Intent(getApplicationContext(), UserProfile.class));
+                            startActivity(new Intent(MapsActivity.this, UserProfile.class));
                             overridePendingTransition(0, 0);
+                            return true;
+
+                        case R.id.addservices:
+                            startActivity(new Intent(MapsActivity.this, AddServices.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+                        case R.id.google_map:
                             return true;
                     }
                     return false;
                 }
-            });
+            });   */
 
         }
 

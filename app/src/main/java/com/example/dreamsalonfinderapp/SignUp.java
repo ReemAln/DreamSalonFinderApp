@@ -54,6 +54,7 @@ public class SignUp extends AppCompatActivity {
 
             user = new UserHelperClass();
             regBtn = findViewById(R.id.reg_btn);
+            regToLoginBtn = findViewById(R.id.reg_login_btn);
 
 
         /*  This is for the bottom Navigation Bar
@@ -63,6 +64,14 @@ public class SignUp extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
         */
+
+            regToLoginBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(SignUp.this, Login.class);
+                    startActivity(intent);
+                }
+            });
 
             regBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -86,6 +95,8 @@ public class SignUp extends AppCompatActivity {
         }
     }
 
+
+
         public void addDataToFirebase (String name, String email, String phone, String password, String confirmPassword){
             user.setName(name);
             user.setEmail(email);
@@ -98,6 +109,7 @@ public class SignUp extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     databaseReference.setValue(user);
+
                     Toast.makeText(SignUp.this, "Account Created.", Toast.LENGTH_SHORT).show();
                 }
 

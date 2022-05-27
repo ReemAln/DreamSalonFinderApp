@@ -3,22 +3,22 @@
     <item
         android:id="@+id/profile"
         android:title="Profile"
-        android:icon="@drawable/profile_link_foreground"/>
+        android:icon="@drawable/ic_profile_24"/>
 
     <item
         android:id="@+id/addservices"
         android:title="Add Services"
-        android:icon="@drawable/map_link_foreground"/>
+        android:icon="@drawable/ic_services_24"/>
 
     <item
-        android:id="@+id/services"
-        android:title="Services"
-        android:icon="@drawable/logout_link_foreground"/>
+        android:id="@+id/favorites"
+        android:title="Favorites"
+        android:icon="@drawable/ic_favorite_shadow_24"/>
 
     <item
         android:id="@+id/update"
         android:title="Update Profile"
-        android:icon="@drawable/logout_link_foreground"/>
+        android:icon="@drawable/ic_update_24"/>
 
 
 </menu>

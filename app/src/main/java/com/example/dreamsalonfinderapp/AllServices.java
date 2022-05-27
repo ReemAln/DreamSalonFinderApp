@@ -44,13 +44,13 @@ public class AllServices extends AppCompatActivity {
 
             BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-            bottomNavigationView.setSelectedItemId(R.id.services);
+            bottomNavigationView.setSelectedItemId(R.id.addservices);
             bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()) {
 
-                        case R.id.services:
+                        case R.id.favorites:
                             startActivity(new Intent(getApplicationContext(), MapsActivity.class));
                             overridePendingTransition(0, 0);
                             return true;
