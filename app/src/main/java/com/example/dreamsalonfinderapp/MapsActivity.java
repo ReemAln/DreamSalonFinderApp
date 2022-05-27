@@ -83,11 +83,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
 
-
+/*
             Intent intent = getIntent();
             searchUrl = intent.getExtras().getString(key);
 
-            Log.i("Info", searchUrl);
+            Log.i("Info", searchUrl);  */
         }
     }
 
