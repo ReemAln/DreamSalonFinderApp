@@ -200,6 +200,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_gravity="bottom"
+                android:layout_marginBottom="52dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:menu="@menu/bottom_nav_menu"
                 tools:layout_editor_absoluteX="0dp" />

@@ -15,4 +15,10 @@
         android:title="Services"
         android:icon="@drawable/logout_link_foreground"/>
 
+    <item
+        android:id="@+id/update"
+        android:title="Update Profile"
+        android:icon="@drawable/logout_link_foreground"/>
+
+
 </menu>
