@@ -13,15 +13,17 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
 
-
     <SearchView
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/sv_location"
-        android:queryHint="Search..."
-        android:iconifiedByDefault="false"
-        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/bg_round"
         android:elevation="5dp"
-        android:background="@drawable/bg_round"/>
+        android:iconifiedByDefault="false"
+        android:queryHint="Search..." />
 
 </RelativeLayout>

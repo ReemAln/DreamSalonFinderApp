@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.example.dreamsalonfinderapp.databinding.ActivityMapsBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -26,22 +27,23 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.example.dreamsalonfinderapp.databinding.ActivityMapsBinding;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
-    private String key = "key";
-    String searchUrl = "";
+    private final String key = "key";
     SearchView searchView;
+
 /*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +72,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
+        // once the map is ready, perform a search using the url built in the adapter and AddServices
+        //
+
 
         if(mLocationPermissionsGranted) {
             getDeviceLocation();
@@ -79,19 +84,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
                 return;
             }
-
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
-
-/*
-            Intent intent = getIntent();
-            searchUrl = intent.getExtras().getString(key);
-
-            Log.i("Info", searchUrl);  */
         }
     }
 
-    private static final String TAG = "MapsActivity";
+    private static final String TAG = "MapActivity";
 
     private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private static final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
@@ -109,36 +107,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
 
             getLocationPermission();
-/*
 
-            // Bottom Navigation Bar
-            BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
-            bottomNavigationView.setSelectedItemId(R.id.google_map);
-            bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    switch (item.getItemId()) {
-                        case R.id.update:
-                            startActivity(new Intent(MapsActivity.this, UpdateUserInfo.class));
-                            overridePendingTransition(0, 0);
-                            return true;
-
-                        case R.id.profile:
-                            startActivity(new Intent(MapsActivity.this, UserProfile.class));
-                            overridePendingTransition(0, 0);
-                            return true;
-
-                        case R.id.addservices:
-                            startActivity(new Intent(MapsActivity.this, AddServices.class));
-                            overridePendingTransition(0, 0);
-                            return true;
-                        case R.id.google_map:
-                            return true;
-                    }
-                    return false;
-                }
-            });   */
 
         }
 

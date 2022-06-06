@@ -33,13 +33,16 @@ public class AllServices extends AppCompatActivity {
 
             searchBtn = findViewById(R.id.searchBtn);
             searchBtn.setOnClickListener(new View.OnClickListener() {
-
                 @Override
                 public void onClick(View view) {
-                   Intent intent = new Intent(AllServices.this, AddServices.class);
+                   Intent intent = new Intent(AllServices.this, MapsActivity.class);
                    startActivity(intent);
                 }
             });
+
+
+
+
 
 
             BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -51,12 +54,17 @@ public class AllServices extends AppCompatActivity {
                     switch (item.getItemId()) {
 
                         case R.id.favorites:
-                            startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+                            startActivity(new Intent(getApplicationContext(), Favorites.class));
                             overridePendingTransition(0, 0);
                             return true;
 
                         case R.id.profile:
                             startActivity(new Intent(getApplicationContext(), UserProfile.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+
+                        case R.id.update:
+                            startActivity(new Intent(getApplicationContext(), UpdateUserInfo.class));
                             overridePendingTransition(0, 0);
                             return true;
 
@@ -66,7 +74,5 @@ public class AllServices extends AppCompatActivity {
                     return false;
                 }
             });
-
         }
-
     }

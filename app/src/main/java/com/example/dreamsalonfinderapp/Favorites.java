@@ -20,6 +20,12 @@ public class Favorites extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
 
+
+
+
+
+
+
             BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
             bottomNavigationView.setSelectedItemId(R.id.favorites);
             bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {

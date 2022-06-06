@@ -4,7 +4,7 @@
 
     <!--Created Strings for search parameters -->
 
-    <string name="haircut">Haircut</string>
+    <string name="haircut">haircut</string>
     <string name="shampoo">Shampoo</string>
     <string name="styling">Styling</string>
     <string name="clipper_shave">Clippers</string>
@@ -15,6 +15,7 @@
     <string name="mani_pedi">Manicure/Pedicure</string>
 
     <string name="services">Services</string>
-    <string name="add_to_services">Add to Services</string>
+    <string name="add_to_services">Start Search</string>
+    <string name="search_hint">Search...</string>
 
 </resources>

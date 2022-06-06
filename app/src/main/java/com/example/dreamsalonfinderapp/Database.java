@@ -102,14 +102,4 @@ public class Database extends AppCompatActivity {
 
 
 
-        /* This is used for navigating through until all code is in the same folder
-        Button btn = findViewById(R.id.buttonSubmit);
-
-        btn.setOnClickListener(view -> {
-            Intent intent = new Intent(getApplicationContext(), AllServices.class);
-            startActivity(intent);
-        });
-                            */
-
-
 
