@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".RegisterUser"
+    android:padding="5dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:src="@drawable/logo"
+            android:layout_gravity="center"
+            android:transitionName="logo_image"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/antic"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="Welcome"
+            android:textSize="25sp"
+            android:transitionName="logo_text"/>
+
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign up to start your new Salon search"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:transitionName="logo_description"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full Name"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name"
+                android:textColor="@color/black"
+                android:background="@drawable/border"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:paddingStart="5dp"
+                android:textColorHint="@color/dark_blue"
+                android:hint="Full Name"/>
+
+            <TextView
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textSize="20sp"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
+                android:textColor="@color/black"
+                android:background="@drawable/border"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:paddingStart="5dp"
+                android:textColorHint="@color/dark_blue"
+                android:hint="Email"/>
+
+            <TextView
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:textSize="20sp"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone"
+                android:textColor="@color/black"
+                android:background="@drawable/border"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:paddingStart="5dp"
+                android:textColorHint="@color/dark_blue"
+                android:hint="Phone Number"/>
+
+            <TextView
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:textSize="20sp"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
+                android:textColor="@color/black"
+                android:background="@drawable/border"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:paddingStart="5dp"
+                android:textColorHint="@color/dark_blue"
+                android:hint="Password"/>
+
+            <TextView
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirm Password"
+                android:textSize="20sp"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:textColor="@color/black"
+                android:id="@+id/confirmPassword"
+                android:background="@drawable/border"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:paddingStart="5dp"
+                android:textColorHint="@color/dark_blue"
+                android:hint="Confirm Password"/>
+
+            <Button
+                android:id="@+id/registerBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/orange"
+                android:text="sign up"
+                android:textColor="#fff"
+                android:transitionName="btn_Go_transition"/>
+
+            <Button
+                android:id="@+id/returnBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:text="Already have an account? Login"
+                android:textColor="@color/dark_blue"
+                android:transitionName="btn_login_signup_transition"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:srcCompat="@drawable/googleg_standard_color_18"/>
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:srcCompat="@drawable/facebook"
+                    android:layout_margin="18dp"/>
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:srcCompat="@drawable/instgram"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

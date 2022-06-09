@@ -29,7 +29,7 @@ import java.util.List;
 
         // Uri for emulator, can comment out the geo part for physical download
         Uri searchUrl = Uri.parse("geo:45.5017,-73.5673?q=");
-        String searchText = "";
+        String searchParams = "";
         String key = "key";
 
         @Override
@@ -44,24 +44,28 @@ import java.util.List;
                 getSupportActionBar().hide();
 
 
-
+                searchParams = "";
                 recyclerView = findViewById(R.id.servicesRecyclerView);
 
 
                 serviceArrayList.add(new Services("Men's ", "Haircut", "15 to 25 min", R.drawable.homme, 5f, 0));
-                serviceArrayList.add(new Services("Femme", "Haircut", "15 to 25 min", R.drawable.femme, 5f, 0));
-                serviceArrayList.add(new Services("Enfant", "Haircut", "15 to 25 min", R.drawable.enfant, 5f, 0));
-                serviceArrayList.add(new Services("Men's", "Shampoo", "15 to 25 min", R.drawable.homme, 5f, 0));
-                serviceArrayList.add(new Services("Femme", "Shampoo", "15 to 25 min", R.drawable.femme, 5f, 0));
-                serviceArrayList.add(new Services("Enfants", "Shampoo", "15 to 25 min", R.drawable.enfant, 5f, 0));
-                serviceArrayList.add(new Services("Homme", "Style", "15 to 25 min", R.drawable.homme, 5f, 0));
-                serviceArrayList.add(new Services("Femme", "Style", "15 to 25 min", R.drawable.femme, 5f, 0));
-                serviceArrayList.add(new Services("Enfants", "Style", "15 to 25 min", R.drawable.enfant, 5f, 0));
-                serviceArrayList.add(new Services("Homme", "Shave", "15 to 25 min", R.drawable.homme, 5f, 0));
-                serviceArrayList.add(new Services("Femme", "Hair Color", "15 to 25 min", R.drawable.femme, 5f, 0));
-                serviceArrayList.add(new Services("Femme", "Blowout", "15 to 25 min", R.drawable.femme, 5f, 0));
-                serviceArrayList.add(new Services("Homme", "Hair Treatment","15 to 25 min", R.drawable.homme, 5f, 0));
-                serviceArrayList.add(new Services("Femme", "Manicure", "15 to 25 min", R.drawable.femme, 5f, 0));
+                serviceArrayList.add(new Services("Women's ", "Haircut", "15 to 25 min", R.drawable.femme, 5f, 0));
+                serviceArrayList.add(new Services("Family Friendly ", "Haircut", "15 to 25 min", R.drawable.enfant, 5f, 0));
+                serviceArrayList.add(new Services("Men's ", "Shampoo", "15 to 25 min", R.drawable.homme, 5f, 0));
+                serviceArrayList.add(new Services("Women's ", "Shampoo", "15 to 25 min", R.drawable.femme, 5f, 0));
+                serviceArrayList.add(new Services("Family Friendly ", "Shampoo", "15 to 25 min", R.drawable.enfant, 5f, 0));
+                serviceArrayList.add(new Services("Men's ", "Style", "15 to 25 min", R.drawable.homme, 5f, 0));
+                serviceArrayList.add(new Services("Women's ", "Style", "15 to 25 min", R.drawable.femme, 5f, 0));
+                serviceArrayList.add(new Services("Family Friendly ", "Style", "15 to 25 min", R.drawable.enfant, 5f, 0));
+                serviceArrayList.add(new Services("Men's ", "Shave", "15 to 25 min", R.drawable.homme, 5f, 0));
+                serviceArrayList.add(new Services("Women's ", "Hair Color", "15 to 25 min", R.drawable.femme, 5f, 0));
+                serviceArrayList.add(new Services("Women's ", "Blowout", "15 to 25 min", R.drawable.femme, 5f, 0));
+                serviceArrayList.add(new Services("Women's ", "Eyelashes", "15 to 25 min", R.drawable.femme, 5f, 0));
+                serviceArrayList.add(new Services("Women's ", "Facial", "15 to 25 min", R.drawable.femme, 5f, 0));
+                serviceArrayList.add(new Services("Women's ", "Make Up", "15 to 25 min", R.drawable.femme, 5f, 0));
+                serviceArrayList.add(new Services("Women's ", "Blowout", "15 to 25 min", R.drawable.femme, 5f, 0));
+                serviceArrayList.add(new Services("Men's ", "Hair Treatment","15 to 25 min", R.drawable.homme, 5f, 0));
+                serviceArrayList.add(new Services("Women's ", "Manicure", "15 to 25 min", R.drawable.femme, 5f, 0));
 
 
 
@@ -69,36 +73,29 @@ import java.util.List;
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
 
-
-                // As of 2020, so try this next
-               /*     String searchParam = String.valueOf(ServicesAdapter.chosenServices);
-                    String url = "https://www.google.com/maps/search/?api=1&query="+searchParam;
-                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,Uri.parse(url));
-                    Toast.makeText(view.getContext(), searchUri.toString(), Toast.LENGTH_LONG).show();
-                    startActivity(intent);   */
-
-
                 buttonToAddServices.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                      /*  Uri searchUri = Uri.parse("geo:0,0?=q=" + Uri.encode(String.valueOf(ServicesAdapter.chosenServices)));
+
+
+                        searchParams = String.join(" ", ServicesAdapter.chosenServices);
+                        Uri searchUri = Uri.parse("geo:0,0?q=" + (searchParams));
                         Intent searchIntent = new Intent(Intent.ACTION_VIEW, searchUri);
-                        Toast.makeText(view.getContext(), searchUri.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(view.getContext(), searchParams, Toast.LENGTH_LONG).show();
                         startActivity(searchIntent);
-*/
-                  /*      String searchParam = String.valueOf(ServicesAdapter.chosenServices);
-                        String url = "https://www.google.com/maps/search/?api=1&query="+searchParam;
-                        Intent intent = new Intent(AddServices.this , MapsActivity.class);
-                        Toast.makeText(view.getContext(), url, Toast.LENGTH_LONG).show();
-                        startActivity(intent);  */
 
-                        Intent intent = new Intent();
-                        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-                            String query = intent.getStringExtra(SearchManager.QUERY);
-                            doMySearch(query);
+
+                      ServicesAdapter.chosenServices.clear();
+
+     /*                   //searchParams = ServicesAdapter.chosenServices.toString() ;
+                        //Uri searchUri = Uri.parse("geo:0,0?q=" + (searchParams));
+                        Intent intent = new Intent(getApplicationContext() , MapsActivity.class);
+                     //   intent.getBundleExtra("key");
+                       // Toast.makeText(view.getContext(), (CharSequence) searchUri, Toast.LENGTH_LONG).show();
+                        startActivity(intent);
+
+                        ServicesAdapter.chosenServices.clear();*/
                         }
-
-                    }
                 });
             }
         }
@@ -107,4 +104,6 @@ import java.util.List;
         @Override
         public void onServicesShowAction(Boolean isSelected) {
         }
+
+
     }

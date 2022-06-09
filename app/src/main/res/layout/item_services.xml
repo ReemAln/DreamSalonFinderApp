@@ -34,7 +34,7 @@
 
     <RatingBar
         android:id="@+id/service_rating"
-        style="?android:attr/ratingBarStyleSmall"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/service_time"
@@ -49,11 +49,23 @@
         android:layout_alignEnd="@+id/service_style"/>
 
     <ImageView
-        android:id="@+id/service_image"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
+        android:id="@+id/service_selected"
+        android:src="@drawable/orange_checkmark"
+        android:visibility="gone"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_alignParentRight="true"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"/>
+
+    <ImageView
+        android:id="@+id/service_favorite"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignRight="@id/service_rating"
+        android:layout_marginTop="125dp"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_favorite_shadow_24" />
 
 </RelativeLayout>

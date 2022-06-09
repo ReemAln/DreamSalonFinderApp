@@ -1,6 +1,6 @@
 package com.example.dreamsalonfinderapp;
 
-
+/*
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,16 +19,17 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.auth.User;
 
 public class SignUp extends AppCompatActivity {
 
     //variables
-    private EditText userNameEdit, userEmailEdit, userPhoneEdit, userEditPassword, userConfirmPassword;
+    private EditText userNameEdit, userEmailEdit, userPhoneEdit, userEditPassword;
     Button regBtn, regToLoginBtn;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-    UserHelperClass user;
+    User user;
 
 
     @Override
@@ -41,18 +42,18 @@ public class SignUp extends AppCompatActivity {
         //Hides action bar
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
-
+/*
 
             userNameEdit = findViewById(R.id.name);
             userEmailEdit = findViewById(R.id.email);
             userPhoneEdit = findViewById(R.id.phone);
             userEditPassword = findViewById(R.id.password);
-            userConfirmPassword = findViewById(R.id.confirmPassword);
+
 
             firebaseDatabase = FirebaseDatabase.getInstance();
             databaseReference = firebaseDatabase.getReference("UserHelperClass");
 
-            user = new UserHelperClass();
+            user = new User();
             regBtn = findViewById(R.id.reg_btn);
             regToLoginBtn = findViewById(R.id.reg_login_btn);
 
@@ -64,11 +65,11 @@ public class SignUp extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
         */
-
+/*
             regToLoginBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(SignUp.this, Login.class);
+                    Intent intent = new Intent(SignUp.this, LoginReem.class);
                     startActivity(intent);
                 }
             });
@@ -76,12 +77,12 @@ public class SignUp extends AppCompatActivity {
             regBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(SignUp.this, Login.class);
+
                     String name = userNameEdit.getText().toString();
                     String email = userEmailEdit.getText().toString();
                     String phone = userPhoneEdit.getText().toString();
                     String password = userEditPassword.getText().toString();
-                    String confirmPassword = userConfirmPassword.getText().toString();
+
 
                     if (TextUtils.isEmpty(name) && TextUtils.isEmpty(phone) && TextUtils.isEmpty(email) && TextUtils.isEmpty(password) && TextUtils.isEmpty(confirmPassword)) {
                         Toast.makeText(SignUp.this, "Please add your information.", Toast.LENGTH_SHORT).show();
@@ -122,6 +123,4 @@ public class SignUp extends AppCompatActivity {
     }
 
 
-
-
-
+*/

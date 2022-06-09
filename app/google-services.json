@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "956134156779",
-    "project_id": "neon-glyph-349520",
-    "storage_bucket": "neon-glyph-349520.appspot.com"
+    "project_number": "951620562011",
+    "firebase_url": "https://cellular-hold-349519-default-rtdb.firebaseio.com",
+    "project_id": "cellular-hold-349519",
+    "storage_bucket": "cellular-hold-349519.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:956134156779:android:33684303b71cb65a2dd1ae",
+        "mobilesdk_app_id": "1:951620562011:android:c634d0554b7d2b712d237e",
         "android_client_info": {
           "package_name": "com.example.dreamsalonfinderapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "956134156779-i0eqt89p4n1nksmvclbh0s9qus5eeji1.apps.googleusercontent.com",
+          "client_id": "951620562011-2std2d55k21tpd615soevn01oqudk3r6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA8DxnwQQSIR_qFF8sS9y0fDpCaylMSSGI"
+          "current_key": "AIzaSyCRYgQ_71VJPifVYbjd9InLQYfyGItgymU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "956134156779-i0eqt89p4n1nksmvclbh0s9qus5eeji1.apps.googleusercontent.com",
+              "client_id": "951620562011-2std2d55k21tpd615soevn01oqudk3r6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

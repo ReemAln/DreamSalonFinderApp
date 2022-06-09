@@ -42,6 +42,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
     private final String key = "key";
+    String url;
     SearchView searchView;
 
 /*
@@ -72,12 +73,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
-        // once the map is ready, perform a search using the url built in the adapter and AddServices
-        //
 
 
         if(mLocationPermissionsGranted) {
             getDeviceLocation();
+            Intent intent = getIntent();
+            url = intent.getStringExtra("key");
 
             if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
             != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
@@ -86,6 +87,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
+
         }
     }
 
@@ -109,6 +111,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             getLocationPermission();
 
 
+
         }
 
     private void getDeviceLocation(){
@@ -130,7 +133,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()),
                                     DEFAULT_ZOOM);
 
-                        }else{
+                        } else {
                             Log.d(TAG, "onComplete: current location is null");
                             Toast.makeText(MapsActivity.this, "unable to get current location", Toast.LENGTH_SHORT).show();
                         }

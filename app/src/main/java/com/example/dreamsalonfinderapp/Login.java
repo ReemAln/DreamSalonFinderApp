@@ -1,37 +1,35 @@
 package com.example.dreamsalonfinderapp;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Pair;
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+//import com.google.android.gms.auth.api.signin.GoogleSignIn;
+//import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-
-import java.security.spec.ECField;
 
 public class Login extends AppCompatActivity {
 
-    Button callSignUp,login_btn;
+    Button callRegisterScreen, login_btn;
     ImageView image;
     TextView logoText;
-    TextInputLayout email,password;
+    TextInputLayout email, password;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +37,7 @@ public class Login extends AppCompatActivity {
         // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
+        mAuth = FirebaseAuth.getInstance();
         //Hides action bar
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -48,26 +47,44 @@ public class Login extends AppCompatActivity {
             logoText = findViewById(R.id.logo_name);
             email = findViewById(R.id.emailLogin);
             password = findViewById(R.id.passwordLogin);
-            callSignUp = findViewById(R.id.signup_screen);
+            callRegisterScreen = findViewById(R.id.registerUserBtn);
             login_btn = findViewById(R.id.loginBtn);
-            //image=findViewById(R.id.imageView);
 
 
             // this needs to be implemented with the database
             login_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(Login.this, UserProfile.class);
-                    startActivity(intent);
+                    mAuth.signInWithEmailAndPassword(String.valueOf(email.getEditText().getText()), String.valueOf(password.getEditText().getText()))
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // Sign in success, update UI with the signed-in user's information
+                                        Log.d("TAG", "signInWithEmail:success");
+                                        Intent intent = new Intent(getApplicationContext(), UserProfile.class);
+                                        startActivity(intent);
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+                                        Log.w("TAG", "signInWithEmail:failure", task.getException());
+                                        Log.w("TAG", String.valueOf(email.getEditText().getText()));
+                                        Toast.makeText(Login.this, "Authentication failed.",
+                                                Toast.LENGTH_SHORT).show();
+
+                                    }
+                                }
+                            });
                 }
             });
+        }
+        callRegisterScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-            callSignUp.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Login.this, SignUp.class);
-                   // startActivity(intent);
-                    try {
+                Intent intent = new Intent(getApplicationContext(), RegisterUser.class);
+                startActivity(intent);
+
+             /*       try {
                         Pair[] pairs = new Pair[6];
                         pairs[0] = new Pair<View, String>(image, "logo_image");
                         pairs[1] = new Pair<View, String>(logoText, "logo_text");
@@ -79,95 +96,69 @@ public class Login extends AppCompatActivity {
                         startActivity(intent, options.toBundle());
                     } catch (Exception e) {
                         Toast.makeText(Login.this, e.getMessage().toString(), Toast.LENGTH_LONG).show();
-                    }
-                }
-            });
+                    }*/
+            }
+        });
+    }
+
+}
+
+
+
+/*
+    public void loginUser (View view){
+        //validate login screen
+        if (!validateUserName() || !validatePassword()) {
+            return;
+        } else {
+            isUser();
         }
     }
 
-
-        private Boolean validateUserName () {
-            String val = email.getEditText().getText().toString();
-
-            if (val.isEmpty()) {
-                email.setError("Field cannot be empty");
-                return false;
-            } else {
-                email.setError(null);
-                email.setErrorEnabled(false);
-                return true;
-            }
-        }
-
-        private Boolean validatePassword () {
-            String val = password.getEditText().getText().toString();
-
-
-            if (val.isEmpty()) {
-                password.setError("Field cannot be empty");
-                return false;
-            } else {
-                password.setError(null);
-                password.setErrorEnabled(false);
-                return true;
-            }
-
-        }
-
-
-
-
-        public void loginUser (View view){
-            //validate login screen
-            if (!validateUserName() | !validatePassword()) {
-                return;
-            } else {
-                isUser();
-            }
-        }
-
-        private void isUser () {
-            final String userEnteredUsername = email.getEditText().getText().toString().trim();
-            final String userEnteredPassword = password.getEditText().getText().toString().trim();
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
-            Query checkUser = reference.orderByChild("email").equalTo(userEnteredUsername);
-            checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if (dataSnapshot.exists()) {
+    private void isUser () {
+        final String userEnteredUsername = email.getEditText().getText().toString().trim();
+        final String userEnteredPassword = password.getEditText().getText().toString().trim();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+        Query checkUser = reference.orderByChild("email").equalTo(userEnteredUsername);
+        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    email.setError(null);
+                    email.setErrorEnabled(false);
+                    String passwordFromDB = dataSnapshot.child(userEnteredUsername).child("password").getValue(String.class);
+                    if (passwordFromDB.equals(userEnteredPassword)) {
                         email.setError(null);
                         email.setErrorEnabled(false);
-                        String passwordFromDB = dataSnapshot.child(userEnteredUsername).child("password").getValue(String.class);
-                        if (passwordFromDB.equals(userEnteredPassword)) {
-                            email.setError(null);
-                            email.setErrorEnabled(false);
-                            String nameFromDB = dataSnapshot.child(userEnteredUsername).child("name").getValue(String.class);
-                            String usernameFromDB = dataSnapshot.child(userEnteredUsername).child("username").getValue(String.class);
-                            String phoneNoFromDB = dataSnapshot.child(userEnteredUsername).child("phoneNo").getValue(String.class);
-                            String emailFromDB = dataSnapshot.child(userEnteredUsername).child("email").getValue(String.class);
-                            Intent intent = new Intent(getApplicationContext(), UserProfile.class);
-                            intent.putExtra("name", nameFromDB);
-                            intent.putExtra("username", usernameFromDB);
-                            intent.putExtra("email", emailFromDB);
-                            intent.putExtra("phoneNo", phoneNoFromDB);
-                            intent.putExtra("password", passwordFromDB);
-                            startActivity(intent);
-                        } else {
-                            //progressBar.setVisibility(View.GONE);
-                            password.setError("Wrong Password");
-                            password.requestFocus();
-                        }
+                        String nameFromDB = dataSnapshot.child(userEnteredUsername).child("name").getValue(String.class);
+                        String usernameFromDB = dataSnapshot.child(userEnteredUsername).child("username").getValue(String.class);
+                        String phoneNoFromDB = dataSnapshot.child(userEnteredUsername).child("phoneNo").getValue(String.class);
+                        String emailFromDB = dataSnapshot.child(userEnteredUsername).child("email").getValue(String.class);
+                        Intent intent = new Intent(getApplicationContext(), UserProfile.class);
+                        intent.putExtra("name", nameFromDB);
+                        intent.putExtra("username", usernameFromDB);
+                        intent.putExtra("email", emailFromDB);
+                        intent.putExtra("phoneNo", phoneNoFromDB);
+                        intent.putExtra("password", passwordFromDB);
+                        startActivity(intent);
                     } else {
                         //progressBar.setVisibility(View.GONE);
-                        email.setError("No such UserHelperClass exist");
-                        email.requestFocus();
+                        password.setError("Wrong Password");
+                        password.requestFocus();
                     }
+                } else {
+                    //progressBar.setVisibility(View.GONE);
+                    email.setError("No such User exist");
+                    email.requestFocus();
                 }
+            }
+*/
+/*
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-                }
-            });
-        }
-}
+            }
+        });
+    }
+}*/
