@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -38,13 +39,9 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".ProfileActivity"
-            android:exported="false" />
-
-        <activity
             android:name=".RegisterUser"
-            android:usesCleartextTraffic="true"
-            android:exported="false"/>
+            android:exported="false"
+            android:usesCleartextTraffic="true" />
         <activity
             android:name=".ForgetPassword"
             android:exported="false" />
@@ -56,9 +53,6 @@
             android:exported="false"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".AllServices"
-            android:exported="false" />
-        <activity
             android:name=".UserProfile"
             android:exported="false" />
         <activity
@@ -68,7 +62,10 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".Favorites"
+            android:name=".FavoritesMain"
+            android:exported="false" />
+        <activity
+            android:name=".UsersActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

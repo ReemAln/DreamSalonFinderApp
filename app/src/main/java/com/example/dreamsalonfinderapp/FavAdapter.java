@@ -1,43 +1,51 @@
 package com.example.dreamsalonfinderapp;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.FirebaseDatabase;
 
-public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
+import java.util.ArrayList;
 
-    private Context context;
-  //  private List<FavService> favServiceList;
-    private FirebaseDatabase firebaseDatabase;
+public class FavAdapter extends ArrayAdapter<UserFavorites> {
 
 
-
+    public FavAdapter(Context context, ArrayList<UserFavorites> userArrayList) {
+        super(context, R.layout.list_item, userArrayList);
+    }
 
     @NonNull
     @Override
-    public FavAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
-    }
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-    @Override
-    public void onBindViewHolder(@NonNull FavAdapter.ViewHolder holder, int position) {
+        UserFavorites userFavorites = getItem(position);
 
-    }
+        if (convertView == null){
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item,parent,false);
 
-    @Override
-    public int getItemCount() {
-        return 0;
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
         }
+
+
+        ImageView imageView = convertView.findViewById(R.id.profile_pic);
+        TextView userName = convertView.findViewById(R.id.personName);
+        TextView lastMsg = convertView.findViewById(R.id.lastMessage);
+        TextView time = convertView.findViewById(R.id.msgtime);
+
+        imageView.setImageResource(userFavorites.imageId);
+        userName.setText(userFavorites.name);
+        lastMsg.setText(userFavorites.lastMessage);
+        time.setText(userFavorites.lastMsgTime);
+
+
+        return convertView;
     }
+
 }

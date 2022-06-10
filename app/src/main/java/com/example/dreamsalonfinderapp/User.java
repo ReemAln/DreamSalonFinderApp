@@ -10,20 +10,30 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class User {
 
-    public  String fullName, email, phone, password;
 
+    private  String fullName, email, phone, password;
+    private int id;
 
-    public User(String fullName, String email, String phone, String password) {
+    public User() {
+
+    }
+
+    public User(String fullName, String email, String phone, String password, int id) {
         this.fullName = fullName;
         this.email = email;
         this.phone = phone;
         this.password = password;
+        this.id = id;
     }
 
 
-    public User(TextInputEditText editTextFullName, TextInputEditText editTextEmail, TextInputEditText editTextPhoneNumber, TextInputEditText editTextPassword) {
+    public int getId() {
+        return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFullName() {
         return fullName;

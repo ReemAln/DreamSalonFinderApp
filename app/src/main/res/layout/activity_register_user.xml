@@ -50,91 +50,70 @@
             android:layout_marginBottom="20dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Full Name"
-                android:textColor="@color/black"
-                android:textSize="20sp"/>
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/name"
-                android:textColor="@color/black"
-                android:background="@drawable/border"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/nameRegister"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:paddingStart="5dp"
-                android:textColorHint="@color/dark_blue"
-                android:hint="Full Name"/>
-
-            <TextView
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email"
-                android:textSize="20sp"/>
+                android:hint="Name"
+                android:outlineAmbientShadowColor="@color/black"
+                android:transitionName="username_transition">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/email"
-                android:textColor="@color/black"
-                android:background="@drawable/border"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputNameRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailRegister"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:paddingStart="5dp"
-                android:textColorHint="@color/dark_blue"
-                android:hint="Email"/>
-
-            <TextView
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Phone Number"
-                android:textSize="20sp"/>
+                android:hint="Email"
+                android:outlineAmbientShadowColor="@color/black"
+                android:transitionName="username_transition">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/phone"
-                android:textColor="@color/black"
-                android:background="@drawable/border"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputEmailRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordRegister"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:paddingStart="5dp"
-                android:textColorHint="@color/dark_blue"
-                android:hint="Phone Number"/>
-
-            <TextView
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Password"
-                android:textSize="20sp"/>
+                android:hint="Password"
+                android:transitionName="password_transition"
+                app:passwordToggleEnabled="true">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password"
-                android:textColor="@color/black"
-                android:background="@drawable/border"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputPasswordRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/confirmPasswordRegister"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:paddingStart="5dp"
-                android:textColorHint="@color/dark_blue"
-                android:hint="Password"/>
-
-            <TextView
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Confirm Password"
-                android:textSize="20sp"/>
+                android:hint="Password"
+                android:transitionName="password_transition"
+                app:passwordToggleEnabled="true">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:textColor="@color/black"
-                android:id="@+id/confirmPassword"
-                android:background="@drawable/border"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:paddingStart="5dp"
-                android:textColorHint="@color/dark_blue"
-                android:hint="Confirm Password"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputConfirmPasswordRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"/>
 
+            </com.google.android.material.textfield.TextInputLayout>
             <Button
                 android:id="@+id/registerBtn"
                 android:layout_width="match_parent"

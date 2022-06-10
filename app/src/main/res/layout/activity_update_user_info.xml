@@ -14,7 +14,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="175dp"
-            android:background="@color/orange"
+            android:background="@color/white"
             android:padding="20dp">
 
             <ImageView
@@ -23,29 +23,20 @@
                 android:layout_height="100dp"
                 android:layout_centerVertical="true"
                 android:background="@color/white"
-                android:src="@drawable/femme" />
+                android:src="@drawable/man" />
 
             <TextView
-                android:id="@+id/full_name"
+                android:id="@+id/fullNameUpdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="15dp"
                 android:layout_toRightOf="@+id/profile_image"
-                android:fontFamily="@font/bungee"
+                android:fontFamily="@font/antic"
+                android:text="Update Your Look"
                 android:includeFontPadding="false"
-                android:text="Someone's"
-                android:textSize="30sp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/full_name"
-                android:layout_marginLeft="15dp"
-                android:layout_toRightOf="@+id/profile_image"
-                android:includeFontPadding="false"
-                android:text="Name"
-                android:textSize="30sp" />
+                android:textSize="35sp"
+                android:textStyle="bold"/>
 
         </RelativeLayout>
 
@@ -58,78 +49,77 @@
             android:padding="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/updateNameLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Full Name">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/updateName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="10dp"
-                    android:text="Someone's Name"/>
+                    android:drawablePadding="10dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/updateEmailLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/updateEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="10dp"
-                    android:text="me@email.com"/>
+                    android:drawablePadding="10dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Phone Number">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="10dp"
-                    android:text="+1-123-456789"/>
-            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/updatePasswordLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/updatePassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="10dp"
-                    android:text="*****"/>
+                    android:drawablePadding="10dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/updateConfirmPasswordLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Confirm Password">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/updateConfirmPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="10dp"
-                    android:text="*****"/>
+                    android:drawablePadding="10dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                android:id="@+id/updateButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/dark_blue"
-                android:fontFamily="@font/bungee"
+                android:backgroundTint="@color/gray2"
+                android:fontFamily="@font/antic"
+                android:textStyle="italic"
+                android:textSize="22sp"
                 android:text="Update" />
             <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/dark_blue"
-            android:fontFamily="@font/bungee"
-            android:text="Delete" />
+                android:id="@+id/deleteButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/gray2"
+                android:fontFamily="@font/antic"
+                android:textStyle="italic"
+                android:text="Delete"
+                android:textSize="22sp"/>
 
         </LinearLayout>
 
@@ -149,8 +139,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_gravity="bottom"
-                android:layout_marginBottom="52dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 app:menu="@menu/bottom_nav_menu"
                 tools:layout_editor_absoluteX="0dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>

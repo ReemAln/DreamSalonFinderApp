@@ -27,10 +27,8 @@ import java.util.List;
 
         private Button buttonToAddServices;
 
-        // Uri for emulator, can comment out the geo part for physical download
-        Uri searchUrl = Uri.parse("geo:45.5017,-73.5673?q=");
         String searchParams = "";
-        String key = "key";
+
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {

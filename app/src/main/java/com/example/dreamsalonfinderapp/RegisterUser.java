@@ -1,42 +1,43 @@
 package com.example.dreamsalonfinderapp;
 
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.dreamsalonfinderapp.helpers.InputValidation;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.android.material.textfield.TextInputLayout;
 
-
-public class RegisterUser extends AppCompatActivity  {
+public class RegisterUser extends AppCompatActivity {
 
     private Button registerUser, returnButton;
-    private TextInputEditText editTextFullName, editTextEmail, editTextPhoneNumber, editTextPassword, editTextConfirmPassword;
-    private ProgressBar progressBar;
+
+    // Layouts
+    private TextInputLayout textInputLayoutName;
+    private TextInputLayout textInputLayoutEmail;
+    private TextInputLayout textInputLayoutPassword;
+    private TextInputLayout textInputLayoutConfirmPassword;
+
+    // Inputs
+    private TextInputEditText textInputEditTextName;
+    private TextInputEditText textInputEditTextEmail;
+    private TextInputEditText textInputEditTextPassword;
+    private TextInputEditText textInputEditTextConfirmPassword;
 
 
-    FirebaseAuth mAuth;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference userRef =  database.getReference("User");
+    private User user;
+    DBHelper dbHelper;
+    private InputValidation inputValidation;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,16 +56,21 @@ public class RegisterUser extends AppCompatActivity  {
             // Button to return to login page
             returnButton = (Button) findViewById(R.id.returnBtn);
 
-            mAuth = FirebaseAuth.getInstance();
+            dbHelper = new DBHelper(this);
 
-            // fields that the user enters information
-            editTextFullName = findViewById(R.id.name);
-            editTextPhoneNumber = findViewById(R.id.phone);
-            editTextEmail = findViewById(R.id.email);
-            editTextPassword = findViewById(R.id.password);
-            editTextConfirmPassword = findViewById(R.id.confirmPassword);
-            //   progressBar = (ProgressBar) findViewById(R.id.progressBar);
+            textInputLayoutName = (TextInputLayout) findViewById(R.id.nameRegister);
+            textInputLayoutEmail = (TextInputLayout) findViewById(R.id.emailRegister);
+            textInputLayoutPassword = (TextInputLayout) findViewById(R.id.passwordRegister);
+            textInputLayoutConfirmPassword = (TextInputLayout) findViewById(R.id.confirmPasswordRegister);
 
+            textInputEditTextName = (TextInputEditText) findViewById(R.id.inputNameRegister);
+            textInputEditTextEmail = (TextInputEditText) findViewById(R.id.inputEmailRegister);
+            textInputEditTextPassword = (TextInputEditText) findViewById(R.id.inputPasswordRegister);
+            textInputEditTextConfirmPassword = (TextInputEditText) findViewById(R.id.inputConfirmPasswordRegister);
+
+            inputValidation = new InputValidation(this);
+            dbHelper = new DBHelper(this);
+            user = new User();
 
         }
         returnButton.setOnClickListener(new View.OnClickListener() {
@@ -79,155 +85,53 @@ public class RegisterUser extends AppCompatActivity  {
         registerUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                String fullName = editTextFullName.getText().toString();
-                String email = editTextEmail.getText().toString();
-                String phoneNumber = editTextPhoneNumber.getText().toString();
-                String password = editTextPassword.getText().toString();
-                String confirmPassword = editTextConfirmPassword.getText().toString();
-
-
-                if (fullName.isEmpty()) {
-                    editTextFullName.setError("Full name is required.");
-                    editTextFullName.requestFocus();
-
-                }
-                if (email.isEmpty()) {
-                    editTextEmail.setError("Email is required.");
-                    editTextEmail.requestFocus();
-
-                }
-                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    editTextEmail.setError("Please provide a valid email.");
-                    editTextEmail.requestFocus();
-
-                }
-                if (phoneNumber.isEmpty()) {
-                    editTextPhoneNumber.setError("Phone number is required.");
-                    editTextPhoneNumber.requestFocus();
-                }
-
-                if (password.isEmpty()) {
-                    editTextPassword.setError("Password is required.");
-                    editTextPassword.requestFocus();
-                }
-
-                if (password.length() < 6) {
-                    editTextPassword.setError("Password should contain at least 6 characters.");
-                    editTextPassword.requestFocus();
-
-                }
-                if (confirmPassword.isEmpty()) {
-                    editTextPassword.setError("Please confirm your password.");
-                    editTextPassword.requestFocus();
-
-                }
-
-                if (!confirmPassword.equals(password)) {
-                    editTextPassword.setError("Your passwords must match, try again.");
-                    editTextPassword.requestFocus();
-
-                }
-
-                createAccount(email, password);
+                    postDataToSQL();
             }
 
         });
     }
-    private void createAccount(String email, String password) {
-        if (!validateForm()) {
+
+    private void postDataToSQL() {
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextName, textInputLayoutName, getString(R.string.error_message_name))) {
             return;
         }
-
-        User user = new User(editTextFullName, editTextEmail, editTextPhoneNumber, editTextPassword);
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-
-                        if (task.isSuccessful()) {
-                            Toast.makeText(RegisterUser.this, "Success!", Toast.LENGTH_SHORT).show();
-                            userRef.setValue(user);
-                            Intent intent = new Intent(RegisterUser.this, Login.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(RegisterUser.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            Log.w("TAG", "createUserWithEmail:failure", task.getException());
-
-                        }
-
-                    }
-                });
-    }
-
-
-    private boolean validateForm() {
-        boolean valid = true;
-
-        String email = editTextEmail.getText().toString();
-        if (TextUtils.isEmpty(email)) {
-            editTextEmail.setError("Required.");
-            valid = false;
-        } else {
-            editTextEmail.setError(null);
+        if (!inputValidation.isInputEditTextEmail(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
+            return;
         }
-
-        String password = editTextPassword.getText().toString();
-        if (TextUtils.isEmpty(password)) {
-            editTextPassword.setError("Required.");
-            valid = false;
-        } else {
-            editTextPassword.setError(null);
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextPassword, textInputLayoutPassword, getString(R.string.error_message_password))) {
+            return;
         }
+        if (!inputValidation.isInputEditTextMatches(textInputEditTextPassword, textInputEditTextConfirmPassword,
+                textInputLayoutConfirmPassword, getString(R.string.error_password_match))) {
+            return;
+        }
+        if (!dbHelper.checkUser(textInputEditTextEmail.getText().toString().trim())) {
 
-        return valid;
+            String name =  textInputEditTextName.getEditableText().toString();
+            String email = textInputEditTextEmail.getEditableText().toString();
+            String password =  textInputEditTextPassword.getEditableText().toString();
+
+            DBHelper dbHelper = new DBHelper(this);
+            SQLiteDatabase database = dbHelper.getWritableDatabase();
+
+            dbHelper.addUser(name, email, password, database);
+            database.close();
+            Toast.makeText(RegisterUser.this, getString(R.string.success_message), Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(RegisterUser.this, Login.class);
+            startActivity(intent);
+            emptyInputEditText();
+        } else {
+            Toast.makeText(RegisterUser.this, getString(R.string.error_valid_email_password), Toast.LENGTH_LONG).show();
+        }
     }
-
+    /**
+     * This method is to empty all input edit text
+     */
+    private void emptyInputEditText() {
+        textInputEditTextName.setText(null);
+        textInputEditTextEmail.setText(null);
+        textInputEditTextPassword.setText(null);
+        textInputEditTextConfirmPassword.setText(null);
+    }
 }
-
-    /*
-                      //here i create a user object from the user java class i have created
-                      User user = new User(fullName, password, email, phoneNumber);
-
-                      //  progressBar.setVisibility(View.VISIBLE);
-
-                      mAuth.createUserWithEmailAndPassword(email, password)
-                              .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-
-                                  @Override
-                                  public void onComplete(@NonNull Task<AuthResult> task) {
-
-                                      //here i create a user object from the user java class i have created
-                                      User user = new User(fullName, password, email, phoneNumber);
-
-                                      //if the user have been registered, we send the user info to database
-                                      if (task.isSuccessful()) {
-
-                                          //here i create a user object from the user java class i have created
-                                          User user1 = new User(fullName, password, email, phoneNumber);
-
-                                          //we call the firebase database object
-                                          FirebaseDatabase.getInstance().getReference("Users")
-                                                  .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
-                                                  .setValue(user1).addOnCompleteListener(new OnCompleteListener<Void>() {
-
-                                                      @Override
-                                                      public void onComplete(@NonNull Task<Void> task) {
-                                                          //if user have been registered successfully to the database
-                                                          if (task.isSuccessful()) {
-                                                              Toast.makeText(RegisterUser.this, "Registered! Welcome!", Toast.LENGTH_LONG).show();
-
-                                                          } else {
-                                                              Toast.makeText(RegisterUser.this, "Failed to register! Try again!", Toast.LENGTH_LONG).show();
-                                                          }
-                                                      }
-                                                  });
-                                      }
-                                  }
-                              });
-                  }
-              });*/
 

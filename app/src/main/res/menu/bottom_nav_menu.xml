@@ -11,9 +11,9 @@
         android:icon="@drawable/ic_services_24"/>
 
     <item
-        android:id="@+id/favorites"
+        android:id="@+id/favoritesMain"
         android:title="Favorites"
-        android:icon="@drawable/ic_favorite_red_24"/>
+        android:icon="@drawable/ic_favorite_shadow_24"/>
 
     <item
         android:id="@+id/update"

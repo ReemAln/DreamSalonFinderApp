@@ -1,10 +1,15 @@
 package com.example.dreamsalonfinderapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,22 +19,22 @@ import android.widget.Toast;
 
 //import com.google.android.gms.auth.api.signin.GoogleSignIn;
 //import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.dreamsalonfinderapp.helpers.InputValidation;
+import com.example.dreamsalonfinderapp.DBHelper;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
+
 
 public class Login extends AppCompatActivity {
 
-    Button callRegisterScreen, login_btn;
-    ImageView image;
-    TextView logoText;
-    TextInputLayout email, password;
-    FirebaseAuth mAuth;
+    private Button callRegisterScreen, loginBtn;
+    private ImageView image;
+    private TextView logoText;
+    private TextInputLayout emailLayout, passwordLayout;
+    private TextInputEditText textInputEditTextEmail, textInputEditTextPassword;
+    private InputValidation inputValidation;
+    private DBHelper dbHelper;
+    private SQLiteDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +42,6 @@ public class Login extends AppCompatActivity {
         // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
-        mAuth = FirebaseAuth.getInstance();
         //Hides action bar
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
@@ -45,62 +49,94 @@ public class Login extends AppCompatActivity {
             //Hooks
             image = findViewById(R.id.logo_image);
             logoText = findViewById(R.id.logo_name);
-            email = findViewById(R.id.emailLogin);
-            password = findViewById(R.id.passwordLogin);
+
             callRegisterScreen = findViewById(R.id.registerUserBtn);
-            login_btn = findViewById(R.id.loginBtn);
+            loginBtn = findViewById(R.id.loginBtn);
+
+            emailLayout = (TextInputLayout) findViewById(R.id.emailLogin);
+            passwordLayout = (TextInputLayout) findViewById(R.id.passwordLogin);
 
 
-            // this needs to be implemented with the database
-            login_btn.setOnClickListener(new View.OnClickListener() {
+            textInputEditTextEmail = (TextInputEditText) findViewById(R.id.inputEmail);
+            textInputEditTextPassword = (TextInputEditText) findViewById(R.id.inputPassword);
+
+
+            dbHelper = new DBHelper(this);
+            inputValidation = new InputValidation(this);
+
+
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationChannel channel = new NotificationChannel("Notification", " Notification", NotificationManager.IMPORTANCE_DEFAULT);
+                NotificationManager manager = getSystemService(NotificationManager.class);
+                manager.createNotificationChannel(channel);
+            }
+            loginBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mAuth.signInWithEmailAndPassword(String.valueOf(email.getEditText().getText()), String.valueOf(password.getEditText().getText()))
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        // Sign in success, update UI with the signed-in user's information
-                                        Log.d("TAG", "signInWithEmail:success");
-                                        Intent intent = new Intent(getApplicationContext(), UserProfile.class);
-                                        startActivity(intent);
-                                    } else {
-                                        // If sign in fails, display a message to the user.
-                                        Log.w("TAG", "signInWithEmail:failure", task.getException());
-                                        Log.w("TAG", String.valueOf(email.getEditText().getText()));
-                                        Toast.makeText(Login.this, "Authentication failed.",
-                                                Toast.LENGTH_SHORT).show();
+                        verifyFromSQLite();
 
-                                    }
-                                }
-                            });
+                     // notification manager is here
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(Login.this, "Notification");
+                    builder.setContentTitle("Logged In!");
+                    builder.setContentText("Time to live the DReaM!!");
+                    builder.setSmallIcon(R.drawable.ic_launcher_background);
+                    builder.setAutoCancel(true);
+                    NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Login.this);
+                    managerCompat.notify(1, builder.build());
+                }
+
+            });
+
+            callRegisterScreen.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), RegisterUser.class);
+                    startActivity(intent);
+
                 }
             });
         }
-        callRegisterScreen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    }
+    private void verifyFromSQLite() {
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextEmail, emailLayout, getString(R.string.error_message_email))) {
+            return;
+        }
+        if (!inputValidation.isInputEditTextEmail(textInputEditTextEmail, emailLayout, getString(R.string.error_message_email))) {
+            return;
+        }
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextPassword, passwordLayout, getString(R.string.error_message_email))) {
+            return;
+        }
+        if (dbHelper.checkUser(textInputEditTextEmail.getText().toString().trim()
+                , textInputEditTextPassword.getText().toString().trim())) {
+            Intent accountsIntent = new Intent(getApplicationContext(), UserProfile.class);
+            emptyInputEditText();
+            startActivity(accountsIntent);
+        } else {
 
-                Intent intent = new Intent(getApplicationContext(), RegisterUser.class);
-                startActivity(intent);
-
-             /*       try {
-                        Pair[] pairs = new Pair[6];
-                        pairs[0] = new Pair<View, String>(image, "logo_image");
-                        pairs[1] = new Pair<View, String>(logoText, "logo_text");
-                        pairs[2] = new Pair<View, String>(email, "username_transition");
-                        pairs[3] = new Pair<View, String>(password, "password_transition");
-                        pairs[4] = new Pair<View, String>(login_btn, "btn_Go_transition");
-                        pairs[5] = new Pair<View, String>(callSignUp, "btn_login_signup_transition");
-                        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(Login.this, pairs);
-                        startActivity(intent, options.toBundle());
-                    } catch (Exception e) {
-                        Toast.makeText(Login.this, e.getMessage().toString(), Toast.LENGTH_LONG).show();
-                    }*/
-            }
-        });
+            Toast.makeText(Login.this, getString(R.string.error_valid_email_password), Toast.LENGTH_LONG).show();
+        }
+    }
+    private void emptyInputEditText() {
+        textInputEditTextEmail.setText(null);
+        textInputEditTextPassword.setText(null);
     }
 
+    public TextInputLayout getEmailLayout() {
+        return emailLayout;
+    }
+
+    public void setEmailLayout(TextInputLayout emailLayout) {
+        this.emailLayout = emailLayout;
+    }
+
+    public TextInputLayout getPasswordLayout() {
+        return passwordLayout;
+    }
+
+    public void setPasswordLayout(TextInputLayout passwordLayout) {
+        this.passwordLayout = passwordLayout;
+    }
 }
 
 
