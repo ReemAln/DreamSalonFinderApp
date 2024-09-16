@@ -1,44 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:padding="5dp"
-    tools:context=".Login">
+    android:background="#fff"
+    tools:context=".RegisterUser"
+    android:padding="5dp">
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <ImageView
-            android:id="@+id/logo_image"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:src="@drawable/logo"
-            android:transitionName="logo_image"/>
+            android:layout_gravity="center"
+            android:transitionName="logo_image"
+            android:contentDescription="TODO" />
 
         <TextView
-            android:id="@+id/logo_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/bungee"
-            android:text="Hello There!"
-            android:textColor="#000"
-            android:textSize="20sp"
-            android:transitionName="logo_text"/>
-
-        <TextView
-            android:id="@+id/slogan_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/antic"
-            android:text="Sign In to Continue"
+            android:layout_gravity="center"
+            android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="19sp"
-            android:transitionName="logo_description"/>
+            android:text="Welcome"
+            android:textSize="25sp"
+            android:transitionName="logo_text"/>
 
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign up to start your new Salon search"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:transitionName="logo_description"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,7 +51,23 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/emailLogin"
+                android:id="@+id/nameRegister"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:outlineAmbientShadowColor="@color/black"
+                android:transitionName="username_transition">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputNameRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailRegister"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -57,14 +76,14 @@
                 android:transitionName="username_transition">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputEmail"
+                    android:id="@+id/inputEmailRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/passwordLogin"
+                android:id="@+id/passwordRegister"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,67 +92,71 @@
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/inputPassword"
+                    android:id="@+id/inputPasswordRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"/>
 
             </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
-                android:id="@+id/forgotPassword"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_margin="5dp"
-                android:background="#00000000"
-                android:elevation="0dp"
-                android:text="Forget Password"
-                android:textColor="@color/black"/>
-
-            <Button
-                android:id="@+id/loginBtn"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/confirmPasswordRegister"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:backgroundTint="@android:color/holo_orange_light"
-                android:text="Go"
+                android:hint="Password"
+                android:transitionName="password_transition"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/inputConfirmPasswordRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/registerBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/orange"
+                android:text="sign up"
                 android:textColor="#fff"
                 android:transitionName="btn_Go_transition"/>
 
             <Button
-                android:id="@+id/registerUserBtn"
+                android:id="@+id/returnBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_margin="5dp"
                 android:background="#00000000"
-                android:elevation="0dp"
-                android:fontFamily="@font/antic"
-                android:text="NEW USER? SIGN UP"
-                android:textColor="#000"
+                android:text="Already have an account? Login"
+                android:textColor="@color/dark_blue"
                 android:transitionName="btn_login_signup_transition"/>
 
-            <LinearLayout android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:gravity="center">
 
-                <ImageView android:id="@+id/imageView2"
+                <ImageView
+                    android:id="@+id/imageView2"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     app:srcCompat="@drawable/googleg_standard_color_18"/>
+
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    app:srcCompat="@drawable/facebook" android:layout_margin="18dp"/>
+                    app:srcCompat="@drawable/facebook"
+                    android:layout_margin="18dp"/>
+
                 <ImageView
                     android:id="@+id/imageView4"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     app:srcCompat="@drawable/instgram"/>
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

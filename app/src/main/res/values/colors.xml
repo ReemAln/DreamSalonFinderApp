@@ -9,13 +9,17 @@
 
     <!--Created Colors  -->
     <color name="gray">#ACACAC</color>
-    <color name="orange">#EB7600</color>
+    <color name="orange">#FFA141</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="dark_blue">#3F51B5</color>
+    <color name="gray2">#4B4C55</color>
+    <color name="dark_blue">#00052E</color>
     <color name="border_color">#FF000000</color>
     <color name="background_color">#FFFFFFFF</color>
 
     <!-- Created Colors  for rating bar -->
     <color name="colorRatingActive">#FDA14F</color>
     <color name="colorRatingInActive">#C9C9D1</color>
+
+
+    <color name="underline">#D8D6D6</color>
 </resources>
